@@ -14,6 +14,8 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
+	"strings"
 	"log"
 	"net/http"
 	"os"
@@ -22,6 +24,7 @@ import (
 )
 
 var bot *linebot.Client
+var echo string
 
 func main() {
 	var err error
@@ -31,6 +34,21 @@ func main() {
 	port := os.Getenv("PORT")
 	addr := fmt.Sprintf(":%s", port)
 	http.ListenAndServe(addr, nil)
+}
+
+func httpGet() {
+    resp, err := http.Get("http://140.115.54.84/gg.php")
+    if err != nil {
+        // handle error
+    }
+ 
+    defer resp.Body.Close()
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        // handle error
+    }
+ 
+    echo = string(body);
 }
 
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
@@ -49,7 +67,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!")).Do(); err != nil {
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+echo)).Do(); err != nil {
 					log.Print(err)
 				}
 			}
