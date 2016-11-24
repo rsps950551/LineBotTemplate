@@ -15,7 +15,6 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
-	"strings"
 	"log"
 	"net/http"
 	"os"
