@@ -36,7 +36,8 @@ func main() {
 }
 
 func httpGet(q string) {
-    resp, err := http.Get("http://140.115.54.82/luis.php?question=djhfgdjg")
+	encodeurl:= url.QueryEscape("http://140.115.54.82/luis.php?question="+q)
+    resp, err := http.Get(encodeurl)
     if err != nil {
         // handle error
     }
