@@ -37,7 +37,7 @@ func main() {
 }
 
 func httpGet(q string) {
-	encodeurl:= url.QueryEscape("http://140.115.54.82/luis.php?question="+q)
+	//encodeurl:= url.QueryEscape("http://140.115.54.82/luis.php?question="+q)
     resp, err := http.PostForm("http://140.115.54.82/luis.php",url.Values{"question": {q}})
     if err != nil {
         // handle error
