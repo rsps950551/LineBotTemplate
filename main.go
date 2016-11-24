@@ -63,6 +63,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	httpGet()
+	
 	for _, event := range events {
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
