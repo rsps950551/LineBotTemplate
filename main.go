@@ -69,7 +69,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
 				httpGet(message.Text)
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+echo)).Do(); err != nil {
+				//message.ID+":"+message.Text
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do(); err != nil {
 					log.Print(err)
 				}
 			}
