@@ -35,8 +35,8 @@ func main() {
 	http.ListenAndServe(addr, nil)
 }
 
-func httpGet() {
-    resp, err := http.Get("http://140.115.54.84/gg.php")
+func httpGet(q string) {
+    resp, err := http.Get("http://140.115.54.82/luis.php?question=djhfgdjg")
     if err != nil {
         // handle error
     }
@@ -68,6 +68,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
+				httpGet(message.Text)
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+echo)).Do(); err != nil {
 					log.Print(err)
 				}
