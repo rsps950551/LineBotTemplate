@@ -22,7 +22,7 @@ import (
 	"os"
 
 	"github.com/line/line-bot-sdk-go/linebot"
-	"github.com/go-sql-driver/mysql"
+	_ "github.com/go-sql-driver/mysql"
 )
 )
 
