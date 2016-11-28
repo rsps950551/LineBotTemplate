@@ -18,13 +18,17 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	"database/sql"
 	"os"
 
 	"github.com/line/line-bot-sdk-go/linebot"
+	"github.com/go-sql-driver/mysql"
+)
 )
 
 var bot *linebot.Client
 var echo string
+var dbinfo string
 
 func main() {
 	var err error
@@ -42,13 +46,16 @@ func httpGet(q string) {
     if err != nil {
         // handle error
     }
- 
+ 	db, err = sql.Open("mysql","root:wmlab@tcp(140.115.54.82:3306)/wmlab?charset=utf8")
+	if err != nil {
+        // handle error
+        dbinfo = err
+    }
     defer resp.Body.Close()
     body, err := ioutil.ReadAll(resp.Body)
     if err != nil {
         // handle error
     }
- 
     echo = string(body);
 }
 
@@ -70,7 +77,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			case *linebot.TextMessage:
 				httpGet(message.Text)
 				//message.ID+":"+message.Text
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do(); err != nil {
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo+dbinfo)).Do(); err != nil {
 					log.Print(err)
 				}
 			}
