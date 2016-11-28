@@ -18,11 +18,12 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	_ "github.com/go-sql-driver/mysql"
 	"database/sql"
 	"os"
 
 	"github.com/line/line-bot-sdk-go/linebot"
-	_ "github.com/go-sql-driver/mysql"
+	
 )
 )
 
