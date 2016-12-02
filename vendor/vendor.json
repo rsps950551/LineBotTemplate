@@ -22,4 +22,8 @@
 		}
 	],
 	"rootPath": "github.com/kkdai/LineBotTemplate"
+	"heroku": {
+        "install" : [ "" ],
+        "goVersion": "go1.7.3"
+         }
 }
