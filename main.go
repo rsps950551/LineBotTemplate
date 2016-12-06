@@ -18,7 +18,7 @@ import (
 	"log"
 	"net/http"
 	"net/url"
-	"database/sql"
+	// "database/sql"
 	"os"
 
 	"github.com/line/line-bot-sdk-go/linebot"
