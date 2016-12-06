@@ -22,7 +22,7 @@ import (
 	"os"
 
 	"github.com/line/line-bot-sdk-go/linebot"
-	_ "github.com/go-sql-driver/mysql"
+	// _ "github.com/go-sql-driver/mysql"
 )
 
 
@@ -41,34 +41,34 @@ func main() {
 
 }
 
-func mysql(){
-	var db, err = sql.Open("mysql","wmlab:wmlab@tcp(140.115.54.82:3306)/wmlab?charset=utf8")
-	if err != nil {
-		fmt.Println(err)
-         // Just for example purpose. You should use proper error handling instead of panic
-    }
-    defer db.Close()
+// func mysql(){
+// 	var db, err = sql.Open("mysql","wmlab:wmlab@tcp(140.115.54.82:3306)/wmlab?charset=utf8")
+// 	if err != nil {
+// 		fmt.Println(err)
+//          // Just for example purpose. You should use proper error handling instead of panic
+//     }
+//     defer db.Close()
 
- 	err = db.Ping()
-	if err != nil {
-		log.Fatal(err)
-	}
+//  	err = db.Ping()
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
 
-	rows, err := db.Query("select * from test")
-	if err != nil {
-		log.Println(err)
-	}
+// 	rows, err := db.Query("select * from test")
+// 	if err != nil {
+// 		log.Println(err)
+// 	}
  
-	defer rows.Close()
-	var col1 int
-	for rows.Next() {
-		err := rows.Scan(&col1)
-		if err != nil {
-			log.Fatal(err)
-		}
-		dbinfo=col1
-	}
-}
+// 	defer rows.Close()
+// 	var col1 int
+// 	for rows.Next() {
+// 		err := rows.Scan(&col1)
+// 		if err != nil {
+// 			log.Fatal(err)
+// 		}
+// 		dbinfo=col1
+// 	}
+// }
 func httpGet(q string) {
 	//encodeurl:= url.QueryEscape("http://140.115.54.82/luis.php?question="+q)
     resp, err := http.PostForm("http://140.115.54.82/luis.php",url.Values{"question": {q}})
@@ -100,9 +100,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
 				httpGet(message.Text)
-				mysql()
+				// mysql()
 				//message.ID+":"+message.Text
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo+dbinfo)).Do(); err != nil {
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do(); err != nil {
 					log.Print(err)
 				}
 			}
