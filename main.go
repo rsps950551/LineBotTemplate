@@ -29,7 +29,7 @@ import (
 var bot *linebot.Client
 var echo string
 var dbinfo string
-var confirm = 
+var confirm :=[]byte(`
 {
   "type": "template",
   "altText": "this is a confirm template",
@@ -49,7 +49,8 @@ var confirm =
           }
       ]
   }
-}
+}`)
+
 
 func main() {
 	var err error
