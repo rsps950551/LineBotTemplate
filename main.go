@@ -29,6 +29,27 @@ import (
 var bot *linebot.Client
 var echo string
 var dbinfo string
+var confirm = 
+{
+  "type": "template",
+  "altText": "this is a confirm template",
+  "template": {
+      "type": "confirm",
+      "text": "Are you sure?",
+      "actions": [
+          {
+            "type": "message",
+            "label": "Yes",
+            "text": "yes"
+          },
+          {
+            "type": "message",
+            "label": "No",
+            "text": "no"
+          }
+      ]
+  }
+}
 
 func main() {
 	var err error
@@ -102,7 +123,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				httpGet(message.Text)
 				// mysql()
 				//message.ID+":"+message.Text
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do(); err != nil {
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(confirm)).Do(); err != nil {
 					log.Print(err)
 				}
 			}
