@@ -88,7 +88,7 @@ const GG =`{
 //        template template
 // }
 
-var FF template
+// var FF template
 
 func main() {
 	var err error
