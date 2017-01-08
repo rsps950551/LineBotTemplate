@@ -31,27 +31,27 @@ var bot *linebot.Client
 var echo string
 
 var dbinfo string
-const confirm = `
-{
-  "type": "template",
-  "altText": "this is a confirm template",
-  "template": {
-      "type": "confirm",
-      "text": "Are you sure?",
-      "actions": [
-          {
-            "type": "message",
-            "label": "Yes",
-            "text": "yes"
-          },
-          {
-            "type": "message",
-            "label": "No",
-            "text": "no"
-          }
-      ]
-  }
-}`
+// const confirm = `
+// {
+//   "type": "template",
+//   "altText": "this is a confirm template",
+//   "template": {
+//       "type": "confirm",
+//       "text": "Are you sure?",
+//       "actions": [
+//           {
+//             "type": "message",
+//             "label": "Yes",
+//             "text": "yes"
+//           },
+//           {
+//             "type": "message",
+//             "label": "No",
+//             "text": "no"
+//           }
+//       ]
+//   }
+// }`
 
 const GG =`{
       "type": "confirm",
@@ -70,7 +70,7 @@ const GG =`{
       ]
 	}`
 
-type action struct {
+type actions struct {
        type string
        label string
        text string
@@ -79,7 +79,7 @@ type action struct {
 type template struct {
        type string
        text string
-       actions []action
+       actions []actions
 }
 
 type confirm struct {
