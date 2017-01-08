@@ -29,7 +29,22 @@ import (
 
 var bot *linebot.Client
 var echo string
-
+var FF = []byte(`{
+      "type": "confirm",
+      "text": "Are you sure?",
+      "actions": [
+          {
+            "type": "message",
+            "label": "Yes",
+            "text": "yes"
+          },
+          {
+            "type": "message",
+            "label": "No",
+            "text": "no"
+          }
+      ]
+	}`)
 var dbinfo string
 // const confirm = `
 // {
@@ -93,22 +108,7 @@ const GG =`{
 func main() {
 	var err error
 	// json.Unmarshal([]byte(GG), &FF)
-	var GG = []byte(`{
-      "type": "confirm",
-      "text": "Are you sure?",
-      "actions": [
-          {
-            "type": "message",
-            "label": "Yes",
-            "text": "yes"
-          },
-          {
-            "type": "message",
-            "label": "No",
-            "text": "no"
-          }
-      ]
-	}`)
+	 
 	bot, err = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
 	log.Println("Bot:", bot, " err:", err)
 	http.HandleFunc("/callback", callbackHandler)
