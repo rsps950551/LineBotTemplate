@@ -46,7 +46,7 @@ var FF = []byte(`{
       ]
 	}`)
 var m = Message{
-    type: "Alice",
+    type: "confirm",
     text: "Hello",
     actions: [
           {
