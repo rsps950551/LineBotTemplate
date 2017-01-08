@@ -17,7 +17,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"encoding/json"
+	// "encoding/json"
 	"net/url"
 	// "database/sql"
 	"os"
@@ -70,29 +70,45 @@ const GG =`{
       ]
 	}`
 
-type actions struct {
-       type string
-       label string
-       text string
-}
+// type actions struct {
+//        type string
+//        label string
+//        text string
+// }
 
-type template struct {
-       type string
-       text string
-       actions []actions
-}
+// type template struct {
+//        type string
+//        text string
+//        actions []actions
+// }
 
-type confirm struct {
-       type string
-       altText string
-       template template
-}
+// type confirm struct {
+//        type string
+//        altText string
+//        template template
+// }
 
 var FF template
 
 func main() {
 	var err error
-	json.Unmarshal([]byte(GG), &FF)
+	// json.Unmarshal([]byte(GG), &FF)
+	var GG == []byte(`{
+      "type": "confirm",
+      "text": "Are you sure?",
+      "actions": [
+          {
+            "type": "message",
+            "label": "Yes",
+            "text": "yes"
+          },
+          {
+            "type": "message",
+            "label": "No",
+            "text": "no"
+          }
+      ]
+	}`)
 	bot, err = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
 	log.Println("Bot:", bot, " err:", err)
 	http.HandleFunc("/callback", callbackHandler)
