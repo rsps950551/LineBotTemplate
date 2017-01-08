@@ -17,6 +17,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"encoding/json"
 	"net/url"
 	// "database/sql"
 	"os"
@@ -28,6 +29,7 @@ import (
 
 var bot *linebot.Client
 var echo string
+
 var dbinfo string
 const confirm = `
 {
@@ -51,9 +53,46 @@ const confirm = `
   }
 }`
 
+const GG =`{
+      "type": "confirm",
+      "text": "Are you sure?",
+      "actions": [
+          {
+            "type": "message",
+            "label": "Yes",
+            "text": "yes"
+          },
+          {
+            "type": "message",
+            "label": "No",
+            "text": "no"
+          }
+      ]
+	}`
+
+type action struct {
+       type string
+       label string
+       text string
+}
+
+type template struct {
+       type string
+       text string
+       actions []action
+}
+
+type confirm struct {
+       type string
+       altText string
+       template template
+}
+
+var FF template
 
 func main() {
 	var err error
+	json.Unmarshal([]byte(GG), &FF)
 	bot, err = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
 	log.Println("Bot:", bot, " err:", err)
 	http.HandleFunc("/callback", callbackHandler)
@@ -124,7 +163,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				httpGet(message.Text)
 				// mysql()
 				//message.ID+":"+message.Text
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTemplateMessage("FF",confirm)).Do(); err != nil {
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTemplateMessage("FF",FF)).Do(); err != nil {
 					log.Print(err)
 				}
 			}
