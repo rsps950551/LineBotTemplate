@@ -93,7 +93,7 @@ var FF template
 func main() {
 	var err error
 	// json.Unmarshal([]byte(GG), &FF)
-	var GG == []byte(`{
+	var GG = []byte(`{
       "type": "confirm",
       "text": "Are you sure?",
       "actions": [
