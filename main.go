@@ -86,13 +86,13 @@ const GG =`{
 	}`
 
 type actions struct {
-       Type string
+       type string
        label string
        text string
 }
 
 type template struct { 
-       Type string
+       type string
        text string
        actions [2]actions
 }
