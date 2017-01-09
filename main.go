@@ -30,7 +30,7 @@ import (
 var bot *linebot.Client
 var echo string
 var FF = []byte(`{
-      "type": "confirm",
+      "Type": "confirm",
       "text": "Are you sure?",
       "actions": [
           {
@@ -46,7 +46,7 @@ var FF = []byte(`{
       ]
 	}`)
 var m = Message{
-    type: "confirm",
+    Type: "confirm",
     text: "Hello",
     actions: [
           {
@@ -107,7 +107,7 @@ const GG =`{
 //        text string
 // }
 
-// type template struct {
+// type template struct { 
 //        type string
 //        text string
 //        actions []actions
