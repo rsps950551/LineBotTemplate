@@ -109,7 +109,7 @@ func main() {
 	var err error
   var n = actions{"message","NO","no"}
   var y = actions{"message","yes","yes"}
-  var t = template{"confirm","FF",[n,y]}
+  var t = template{"confirm","FF",{n,y}}
 	// json.Unmarshal([]byte(GG), &FF)
   m, err := json.Marshal(t)
 	//json.Unmarshal(FF, &m)
