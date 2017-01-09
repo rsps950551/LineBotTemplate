@@ -45,7 +45,7 @@ var FF = []byte(`{
           }
       ]
 	}`)
-var m 
+var m json
 // const confirm = `
 // {
 //   "type": "template",
