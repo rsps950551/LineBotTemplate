@@ -45,22 +45,7 @@ var FF = []byte(`{
           }
       ]
 	}`)
-var m = Message{
-    Type: "confirm",
-    text: "Hello",
-    actions: [
-          {
-            type: "message",
-            label: "Yes",
-            text: "yes"
-          },
-          {
-            type: "message",
-            label: "No",
-            text: "no"
-          }
-      ]
-}
+var m 
 var dbinfo string
 // const confirm = `
 // {
@@ -101,17 +86,17 @@ const GG =`{
       ]
 	}`
 
-// type actions struct {
-//        type string
-//        label string
-//        text string
-// }
+type actions struct {
+       Type string
+       label string
+       text string
+}
 
-// type template struct { 
-//        type string
-//        text string
-//        actions []actions
-// }
+type template struct { 
+       Type string
+       text string
+       actions []actions
+}
 
 // type confirm struct {
 //        type string
@@ -123,7 +108,11 @@ const GG =`{
 
 func main() {
 	var err error
+  var n = actions{"message","NO","no"}
+  var y = actions{"message","yes","yes"}
+  var t = template{"confirm","FF",[n,y]}
 	// json.Unmarshal([]byte(GG), &FF)
+  m, err := json.Marshal(t)
 	json.Unmarshal(FF, &m)
 	bot, err = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
 	log.Println("Bot:", bot, " err:", err)
