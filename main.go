@@ -94,7 +94,7 @@ type actions struct {
 type template struct { 
        Type string
        text string
-       actions []actions
+       actions [2]actions
 }
 
 // type confirm struct {
