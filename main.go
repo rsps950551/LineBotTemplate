@@ -46,7 +46,6 @@ var FF = []byte(`{
       ]
 	}`)
 var m 
-var dbinfo string
 // const confirm = `
 // {
 //   "type": "template",
@@ -113,7 +112,7 @@ func main() {
   var t = template{"confirm","FF",[n,y]}
 	// json.Unmarshal([]byte(GG), &FF)
   m, err := json.Marshal(t)
-	json.Unmarshal(FF, &m)
+	//json.Unmarshal(FF, &m)
 	bot, err = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
 	log.Println("Bot:", bot, " err:", err)
 	http.HandleFunc("/callback", callbackHandler)
