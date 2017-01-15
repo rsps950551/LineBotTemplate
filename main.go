@@ -122,7 +122,7 @@ func main() {
   var cacheContent = map[string]interface{}{
     "type": "confirm",
     "text": "Are you sure?",
-    "actions":{n,y},
+    "actions":[n,y],
   }  
   m, err := json.Marshal(cacheContent)
 	//json.Unmarshal(FF, &m)
