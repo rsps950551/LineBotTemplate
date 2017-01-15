@@ -85,17 +85,17 @@ const GG =`{
       ]
 	}`
 
-type actions struct {
-       type string
-       label string
-       text string
-}
+// type actions struct {
+//        type string
+//        label string
+//        text string
+// }
 
-type template struct { 
-       type string
-       text string
-       actions [2]actions
-}
+// type template struct { 
+//        type string
+//        text string
+//        actions [2]actions
+// }
 
 // type confirm struct {
 //        type string 
@@ -128,7 +128,7 @@ func main() {
  //        "text": "yes",
  //      },
  //  }  
-  m, err := json.Marshal(cacheContent)
+  // m, err := json.Marshal(cacheContent)
 	//json.Unmarshal(FF, &m)
 	bot, err = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
 	log.Println("Bot:", bot, " err:", err)
