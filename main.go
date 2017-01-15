@@ -107,22 +107,21 @@ const GG =`{
 
 func main() {
 	var err error
-  var n = actions{"message","NO","no"}
-  var y = actions{"message","yes","yes"}
+  var y = map[string]interface{}{
+        "type": "message",
+        "label": "Yes",
+        "text": "yes"}
+  var n = map[string]interface{}{
+        "type": "message",
+        "label": "No",
+        "text": "no"
+    }
   var t = template{"confirm","FF",{n,y}}
 	// json.Unmarshal([]byte(GG), &FF)
   var cacheContent = map[string]interface{}{
     "type": "confirm",
     "text": "Are you sure?",
-    "actions": map[string]interface{}{
-        "type": "message",
-        "label": "Yes",
-        "text": "yes"
-    },map[string]interface{}{
-        "type": "message",
-        "label": "No",
-        "text": "no"
-    }
+    "actions":{n,y}
   }  
   m, err := json.Marshal(cacheContent)
 	//json.Unmarshal(FF, &m)
