@@ -85,20 +85,20 @@ const GG =`{
       ]
 	}`
 
-type actions struct {
-       type string
-       label string
-       text string
-}
+// type actions struct {
+//        type string
+//        label string
+//        text string
+// }
 
-type template struct { 
-       type string
-       text string
-       actions [2]actions
-}
+// type template struct { 
+//        type string
+//        text string
+//        actions [2]actions
+// }
 
 // type confirm struct {
-//        type string
+//        type string 
 //        altText string
 //        template template
 // }
@@ -111,7 +111,20 @@ func main() {
   var y = actions{"message","yes","yes"}
   var t = template{"confirm","FF",{n,y}}
 	// json.Unmarshal([]byte(GG), &FF)
-  m, err := json.Marshal(t)
+  var cacheContent := map[string]interface{}{
+    "type": "confirm",
+    "text": "Are you sure?",
+    "actions": {map[string]interface{}{
+        "type": "message",
+        "label": "Yes",
+        "text": "yes"
+    },map[string]interface{}{
+        "type": "message",
+        "label": "No",
+        "text": "no"
+    }}
+  }  
+  m, err := json.Marshal(cacheContent)
 	//json.Unmarshal(FF, &m)
 	bot, err = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
 	log.Println("Bot:", bot, " err:", err)
