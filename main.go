@@ -85,17 +85,17 @@ const GG =`{
       ]
 	}`
 
-// type actions struct {
-//        type string
-//        label string
-//        text string
-// }
+type actions struct {
+       type string
+       label string
+       text string
+}
 
-// type template struct { 
-//        type string
-//        text string
-//        actions [2]actions
-// }
+type template struct { 
+       type string
+       text string
+       actions [2]actions
+}
 
 // type confirm struct {
 //        type string 
@@ -107,27 +107,27 @@ const GG =`{
 
 func main() {
 	var err error
-  var y = map[string]interface{}{
-        "type": "message",
-        "label": "Yes",
-        "text": "yes",
-      }
-  var n = map[string]interface{}{
-        "type": "message",
-        "label": "No",
-        "text": "no",
-    }
-  // var t = template{"confirm","FF",{n,y}}
-	// json.Unmarshal([]byte(GG), &FF)
-  var cacheContent = map[string]interface{}{
-    "type": "confirm",
-    "text": "Are you sure?",
-    "actions":map[string]interface{}{
-        "type": "message",
-        "label": "Yes",
-        "text": "yes",
-      },
-  }  
+ //  var y = map[string]interface{}{
+ //        "type": "message",
+ //        "label": "Yes",
+ //        "text": "yes",
+ //      }
+ //  var n = map[string]interface{}{
+ //        "type": "message",
+ //        "label": "No",
+ //        "text": "no",
+ //    }
+ //  // var t = template{"confirm","FF",{n,y}}
+	// // json.Unmarshal([]byte(GG), &FF)
+ //  var cacheContent = map[string]interface{}{
+ //    "type": "confirm",
+ //    "text": "Are you sure?",
+ //    "actions":map[string]interface{}{
+ //        "type": "message",
+ //        "label": "Yes",
+ //        "text": "yes",
+ //      },
+ //  }  
   m, err := json.Marshal(cacheContent)
 	//json.Unmarshal(FF, &m)
 	bot, err = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
@@ -183,7 +183,12 @@ func httpGet(q string) {
 
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	events, err := bot.ParseRequest(r)
+  leftBtn := linebot.NewMessageTemplateAction("left", "left clicked")
+  rightBtn := linebot.NewMessageTemplateAction("right", "right clicked")
 
+  template := linebot.NewConfirmTemplate("Hello World", leftBtn, rightBtn)
+
+  templatemessgage := linebot.NewTemplateMessage("Sorry :(, please update your app.", template)
 	if err != nil {
 		if err == linebot.ErrInvalidSignature {
 			w.WriteHeader(400)
@@ -193,6 +198,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	//GG
+
+
 	for _, event := range events {
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
@@ -200,7 +207,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				httpGet(message.Text)
 				// mysql()
 				//message.ID+":"+message.Text
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTemplateMessage("FF",m)).Do(); err != nil {
+				if _, err = bot.ReplyMessage(event.ReplyToken, templatemessgage.Do(); err != nil {
 					log.Print(err)
 				}
 			}
