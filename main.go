@@ -111,7 +111,7 @@ func main() {
   var y = actions{"message","yes","yes"}
   var t = template{"confirm","FF",{n,y}}
 	// json.Unmarshal([]byte(GG), &FF)
-  var cacheContent := map[string]interface{}{
+  var cacheContent = map[string]interface{}{
     "type": "confirm",
     "text": "Are you sure?",
     "actions": {map[string]interface{}{
