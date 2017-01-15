@@ -207,7 +207,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				httpGet(message.Text)
 				// mysql()
 				//message.ID+":"+message.Text
-				if _, err = bot.ReplyMessage(event.ReplyToken, templatemessgage.Do(); err != nil {
+				if _, err = bot.ReplyMessage(event.ReplyToken, templatemessgage).Do(); err != nil {
 					log.Print(err)
 				}
 			}
