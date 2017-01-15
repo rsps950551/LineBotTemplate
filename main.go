@@ -117,7 +117,7 @@ func main() {
         "label": "No",
         "text": "no",
     }
-  var t = template{"confirm","FF",{n,y}}
+  // var t = template{"confirm","FF",{n,y}}
 	// json.Unmarshal([]byte(GG), &FF)
   var cacheContent = map[string]interface{}{
     "type": "confirm",
