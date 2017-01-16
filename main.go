@@ -212,12 +212,12 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				// mysql()
 				//message.ID+":"+message.Text
         if(echo == "bottun"){
-            if _, err = bot.ReplyMessage(event.ReplyToken, templatemessgage).Do(); err != nil {
-            log.Print(err) }
+          if _, err = bot.ReplyMessage(event.ReplyToken, templatemessgage).Do()
+        } else {
+          if _, err = bot.ReplyMessage(event.ReplyToken, echo).Do()
         }
-				else{
-          if _, err = bot.ReplyMessage(event.ReplyToken, echo).Do(); err != nil {
-            log.Print(err) }
+				
+          
         
 			}
 		}
