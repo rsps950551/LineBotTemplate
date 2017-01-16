@@ -218,7 +218,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				else{
           if _, err = bot.ReplyMessage(event.ReplyToken, echo).Do(); err != nil {
             log.Print(err) }
-        }
+        
 			}
 		}
 	}
