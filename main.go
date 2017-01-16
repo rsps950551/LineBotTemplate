@@ -85,17 +85,17 @@ const GG =`{
       ]
 	}`
 
-// type actions struct {
-//        type string
-//        label string
-//        text string
-// }
+type actions struct {
+       type string
+       label string
+       text string
+}
 
-// type template struct { 
-//        type string
-//        text string
-//        actions [2]actions
-// }
+type template struct { 
+       type string
+       text string
+       actions [2]actions
+}
 
 // type confirm struct {
 //        type string 
@@ -179,6 +179,10 @@ func httpGet(q string) {
         // handle error
     }
     echo = string(body)
+
+    if(q=="give me bottun"){
+      echo = "bottun"
+    }
 }
 
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
@@ -207,9 +211,16 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				httpGet(message.Text)
 				// mysql()
 				//message.ID+":"+message.Text
-				if _, err = bot.ReplyMessage(event.ReplyToken, templatemessgage).Do(); err != nil {
-					log.Print(err)
-				}
+        if(echo == "bottun"){
+            if _, err = bot.ReplyMessage(event.ReplyToken, templatemessgage).Do(); err != nil {
+            log.Print(err)
+          }
+        }
+				else{
+          if _, err = bot.ReplyMessage(event.ReplyToken, echo).Do(); err != nil {
+            log.Print(err)
+          }
+        }
 			}
 		}
 	}
