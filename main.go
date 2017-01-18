@@ -184,7 +184,7 @@ func httpGet(q string) {
         // handle error
     }
     // defer resp.Body.Close()
-    er := json.NewDecoder(resp.Body).Decode(&d)
+    json.Unmarshal([]byte(resp.Body), &d)
     //body, err := ioutil.ReadAll(resp.Body)
     if er != nil {
         // handle error
