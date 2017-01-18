@@ -186,9 +186,6 @@ func httpGet(q string) {
     // defer resp.Body.Close()
     json.Unmarshal([]byte(resp.Body), &d)
     //body, err := ioutil.ReadAll(resp.Body)
-    if er != nil {
-        // handle error
-    }
 
     echo = string(d.resultType)
 
