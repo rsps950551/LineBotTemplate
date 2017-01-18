@@ -184,12 +184,12 @@ func httpGet(q string) {
         // handle error
     }
     // defer resp.Body.Close()
-    _, err := json.NewDecoder(resp.Body).Decode(&d)
+    _, er := json.NewDecoder(resp.Body).Decode(&d)
     //body, err := ioutil.ReadAll(resp.Body)
-    if err != nil {
+    if er != nil {
         // handle error
     }
-    
+
     echo = string(d.resultType)
 
     if(q=="give me bottun"){
