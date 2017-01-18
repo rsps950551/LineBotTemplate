@@ -85,6 +85,15 @@ const GG =`{
       ]
 	}`
 
+
+type Data struct{
+    resultType string
+    resultQuestion string
+    resultContent []string
+    requirementType string
+}
+
+var d Data
 // type actions struct {
 //        type string
 //        label string
@@ -169,17 +178,18 @@ func main() {
 // }
 func httpGet(q string) {
 	//encodeurl:= url.QueryEscape("http://140.115.54.82/luis.php?question="+q)
+
     resp, err := http.PostForm("http://140.115.54.82/luis.php",url.Values{"question": {q}})
     if err != nil {
         // handle error
     }
     defer resp.Body.Close()
+    err := json.NewDecoder(r.Body).Decode(&d)
     body, err := ioutil.ReadAll(resp.Body)
     if err != nil {
         // handle error
     }
-    echo = string(body)
-
+    echo = string(d.resultType)
     if(q=="give me bottun"){
       echo = "bottun"
     }
