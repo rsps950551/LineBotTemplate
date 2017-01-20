@@ -92,7 +92,7 @@ type content struct{
 
 type Data struct{
     resultType string `json:"resultType"`
-    resultQuestion string `json:"resultTypeQuestion"`
+    resultQuestion string `json:"resultQuestion"`
     resultContent []content `json:"resultContent"`
     requirementType string `json:"requirementType"`
 }
