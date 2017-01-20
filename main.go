@@ -184,10 +184,11 @@ func httpGet(q string) {
         // handle error
     }
     defer resp.Body.Close()
-    
+    var ff Data
     body, err := ioutil.ReadAll(resp.Body)
-    json.Unmarshal(body, &d)
-    echo = d.resultType
+    er := json.NewDecoder(body).Decode(ff)
+    // json.Unmarshal(body, &d)
+    echo = string(ff.resultType)
 
     if(q=="give me bottun"){
       echo = "bottun"
