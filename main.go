@@ -87,7 +87,7 @@ const GG =`{
 	}`
 type content struct{
     entity string `json:"entity"`
-    Type string `json:"type"`
+    type string `json:"type"`
 }
 
 type Data struct{
