@@ -187,8 +187,8 @@ func httpGet(q string) {
     defer resp.Body.Close()
     var ff Data
     body, err := ioutil.ReadAll(resp.Body)
-    er := json.NewDecoder(strings.NewReader(body)).Decode(ff)
-    // json.Unmarshal(body, &d)
+    // er := json.NewDecoder(strings.NewReader(body)).Decode(ff)
+    json.Unmarshal(body, &ff)
     echo = string(ff.resultType)
 
     if(q=="give me bottun"){
