@@ -186,7 +186,7 @@ func httpGet(q string) {
     defer resp.Body.Close()
     var ff Data
     body, err := ioutil.ReadAll(resp.Body)
-    er := json.NewDecoder(body).Decode(ff)
+    er := json.NewDecoder(string(body)).Decode(ff)
     // json.Unmarshal(body, &d)
     echo = string(ff.resultType)
 
