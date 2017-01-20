@@ -87,10 +87,10 @@ const GG =`{
 
 
 type Data struct{
-    resultType string
-    resultQuestion string
-    resultContent []string
-    requirementType string
+    resultType string `json:"resultType"`
+    resultQuestion string `json:"Question"`
+    resultContent []string `json:"Content"`
+    requirementType string `json:"requirementType"`
 }
 
 var d Data
