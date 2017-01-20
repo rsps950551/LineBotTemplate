@@ -187,7 +187,7 @@ func httpGet(q string) {
     
     body, err := ioutil.ReadAll(resp.Body)
     json.Unmarshal(body, &d)
-    echo = string(d.resultType)
+    echo = string(body)
 
     if(q=="give me bottun"){
       echo = "bottun"
