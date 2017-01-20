@@ -85,12 +85,15 @@ const GG =`{
           }
       ]
 	}`
-
+type content struct{
+    entity string `json:"entity"`
+    Type string `json:"type"`
+}
 
 type Data struct{
     resultType string `json:"resultType"`
     resultQuestion string `json:"Question"`
-    resultContent []string `json:"Content"`
+    resultContent []content `json:"Content"`
     requirementType string `json:"requirementType"`
 }
 
@@ -188,8 +191,8 @@ func httpGet(q string) {
     u := map[string]interface{}{}
     body, err := ioutil.ReadAll(resp.Body)
     // er := json.NewDecoder(strings.NewReader(body)).Decode(ff)
-    json.Unmarshal(body, &u)
-    echo = u["entity"].(string)
+    json.Unmarshal(body, &d)
+    echo = string(d.resultType)
 
     if(q=="give me bottun"){
       echo = "bottun"
