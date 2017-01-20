@@ -19,6 +19,7 @@ import (
 	"net/http"
 	"encoding/json"
 	"net/url"
+  "strings"
 	// "database/sql"
 	"os"
 
@@ -186,7 +187,7 @@ func httpGet(q string) {
     defer resp.Body.Close()
     var ff Data
     body, err := ioutil.ReadAll(resp.Body)
-    er := json.NewDecoder(string(body)).Decode(ff)
+    er := json.NewDecoder(strings.NewReader(body)).Decode(ff)
     // json.Unmarshal(body, &d)
     echo = string(ff.resultType)
 
