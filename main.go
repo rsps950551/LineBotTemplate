@@ -28,7 +28,7 @@ import (
 
 
 var bot *linebot.Client
-var echo string
+var echo string 
 var FF = []byte(`{
       "Type": "confirm",
       "text": "Are you sure?",
@@ -186,7 +186,7 @@ func httpGet(q string) {
     defer resp.Body.Close()
     
     body, err := ioutil.ReadAll(resp.Body)
-    json.Unmarshal([]byte(body), &d)
+    json.Unmarshal(body, &d)
     echo = string(d.resultType)
 
     if(q=="give me bottun"){
