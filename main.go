@@ -158,7 +158,7 @@ func main() {
 //     defer db.Close()
 
 //  	err = db.Ping()
-// 	if err != nil {
+// 	if err != nil {        
 // 		log.Fatal(err)
 // 	}
 
@@ -185,7 +185,7 @@ func httpGet(q string) {
         // handle error
     }
     defer resp.Body.Close()
-    var ff Data
+    ff :=Data{}
     body, err := ioutil.ReadAll(resp.Body)
     // er := json.NewDecoder(strings.NewReader(body)).Decode(ff)
     json.Unmarshal(body, &ff)
