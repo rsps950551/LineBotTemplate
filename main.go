@@ -195,7 +195,7 @@ func httpGet(q string) {
     // er := json.NewDecoder(strings.NewReader(body)).Decode(ff)
     json.Unmarshal(body, &u)
     
-    echo = u.resultType
+    echo = string(u.resultType)
     
 
 
