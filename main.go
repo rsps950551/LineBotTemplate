@@ -204,7 +204,7 @@ func httpGet(q string) {
     
     
     
-    echo =  u["resultContent"]["entity"][0].(string)
+    echo =  u["resultContent"]["entity"].(string)
 
 
     if(q=="give me bottun"){
