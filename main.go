@@ -190,12 +190,12 @@ func httpGet(q string) {
         // handle error
     }
     defer resp.Body.Close()
+    D := Data{}
+    //body, err := ioutil.ReadAll(resp.Body)
+    json,er := json.NewDecoder(resp.Body).Decode(D)
+    //json.Unmarshal(body, &d)
     
-    body, err := ioutil.ReadAll(resp.Body)
-    // er := json.NewDecoder(strings.NewReader(body)).Decode(ff)
-    json.Unmarshal(body, &d)
-    
-    //echo = string(u.resultType)
+    echo = string(D.resultType)
     
 
 
