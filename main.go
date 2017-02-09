@@ -14,7 +14,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	//"io/ioutil"
 	"log"
 	"net/http"
 	"encoding/json"
@@ -192,7 +192,7 @@ func httpGet(q string) {
     defer resp.Body.Close()
     D := Data{}
     //body, err := ioutil.ReadAll(resp.Body)
-    json,er := json.NewDecoder(resp.Body).Decode(D)
+    json.NewDecoder(resp.Body).Decode(D)
     //json.Unmarshal(body, &d)
     
     echo = string(D.resultType)
