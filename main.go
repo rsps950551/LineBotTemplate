@@ -14,7 +14,7 @@ package main
 
 import (
 	"fmt"
-	//"io/ioutil"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"encoding/json"
@@ -190,19 +190,21 @@ func httpGet(q string) {
         // handle error
     }
     defer resp.Body.Close()
-    D := Data{}
-    //body, err := ioutil.ReadAll(resp.Body)
-    er:=json.NewDecoder(resp.Body).Decode(&D)
-    if er != nil {
-        // handle error
-      echo = er. Error()
-    } else {
-      echo = string(D.resultQuestion)
-    }
-    //json.Unmarshal(body, &d)
+    // D := Data{}
+    u := map[string]interface{}{}
+    body, err := ioutil.ReadAll(resp.Body)
+    // er:=json.NewDecoder(resp.Body).Decode(&D)
+    // if er != nil {
+    //     // handle error
+    //   echo = er. Error()
+    // } else {
+    //   echo = string(D.resultQuestion)
+    // }
+    json.Unmarshal(resp.Body, &u)
     
+    l:= len(u)
     
-    
+    echo =  string(l)
 
 
     if(q=="give me bottun"){
