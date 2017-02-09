@@ -233,7 +233,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
         if(echo == "bottun"){
            _, err = bot.ReplyMessage(event.ReplyToken, templatemessgage).Do()
         } else {
-           _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(d.resultType)).Do()
+           _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
         }
 				
           
