@@ -200,7 +200,7 @@ func httpGet(q string) {
     // } else {
     //   echo = string(D.resultQuestion)
     // }
-    json.Unmarshal(resp.Body, &u)
+    json.Unmarshal(body, &u)
     
     l:= len(u)
     
