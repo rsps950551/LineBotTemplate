@@ -190,12 +190,12 @@ func httpGet(q string) {
         // handle error
     }
     defer resp.Body.Close()
-    var u Data
+    
     body, err := ioutil.ReadAll(resp.Body)
     // er := json.NewDecoder(strings.NewReader(body)).Decode(ff)
-    json.Unmarshal(body, &u)
+    json.Unmarshal(body, &d)
     
-    echo = string(u.resultType)
+    //echo = string(u.resultType)
     
 
 
@@ -233,7 +233,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
         if(echo == "bottun"){
            _, err = bot.ReplyMessage(event.ReplyToken, templatemessgage).Do()
         } else {
-           _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
+           _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(d.resultType)).Do()
         }
 				
           
