@@ -196,7 +196,7 @@ func httpGet(q string) {
     body,er:=json.NewDecoder(resp.Body).Decode(&D)
     //json.Unmarshal(body, &d)
     
-    echo = string(D)
+    echo = string(D[0].resultQuestion)
     
 
 
