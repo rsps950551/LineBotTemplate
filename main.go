@@ -210,7 +210,7 @@ func httpGet(q string) {
                      switch v2 := v.(type) {
                             case string:
                                    fmt.Println("Key：", k, "，Value：", v2, "，型別是 string")
-                                   echo := echo+"Key："+k+"Value："+v2
+                                   echo = echo+"Key："+k+"Value："+v2
                             case int:
                                    fmt.Println("Key：", k, "，Value：", v2, "，型別是 int")
                             case float64:
@@ -219,10 +219,10 @@ func httpGet(q string) {
                                    fmt.Println("Key：", k, "，Value：", v2, "，型別是 bool")
                             case []interface{}:
                                    fmt.Println(k, "是 陣列：", v2)
-                                   echo := echo+"是 陣列："
+                                   echo = echo+"是 陣列："
                                    for i, iv := range v2 {
                                           fmt.Println(i, "：", iv)
-                                     echo := echo+"Value："+iv.(string)
+                                     echo = echo+"Value："+iv.(string)
                                    }
                             default:
                                    fmt.Println(k, " 是其他型別...")
