@@ -222,7 +222,7 @@ func httpGet(q string) {
                                    echo := echo+"是 陣列："
                                    for i, iv := range v2 {
                                           fmt.Println(i, "：", iv)
-                                     echo := echo+"Key："+i+"Value："+iv
+                                     echo := echo+"Key："+string(i)+"Value："+string(iv)
                                    }
                             default:
                                    fmt.Println(k, " 是其他型別...")
@@ -230,7 +230,7 @@ func httpGet(q string) {
               }
        }
     
-    echo =  u["resultContent"].(string)
+    
 
 
     if(q=="give me bottun"){
