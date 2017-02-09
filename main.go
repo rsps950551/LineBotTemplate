@@ -197,9 +197,12 @@ func httpGet(q string) {
         // handle error
       echo = string(er)
     }
+    else{
+      echo = string(D.resultQuestion)
+    }
     //json.Unmarshal(body, &d)
     
-    echo = string(D.resultQuestion)
+    
     
 
 
