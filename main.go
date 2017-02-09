@@ -193,7 +193,7 @@ func httpGet(q string) {
 
     D := Data{}
     //body, err := ioutil.ReadAll(resp.Body)
-    json.NewDecoder(resp.Body).Decode(&D)
+    body,er:=json.NewDecoder(resp.Body).Decode(&D)
     //json.Unmarshal(body, &d)
     
     echo = string(D)
