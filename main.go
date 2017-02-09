@@ -22,7 +22,6 @@ import (
   // "strings"
 	// "database/sql"
 	"os"
-
 	"github.com/line/line-bot-sdk-go/linebot"
 	// _ "github.com/go-sql-driver/mysql"
 )
@@ -182,17 +181,23 @@ func main() {
 // }
 func httpGet(q string) {
 	//encodeurl:= url.QueryEscape("http://140.115.54.82/luis.php?question="+q)
-
+    var resultType string
+    var resultQuestion string
+    var resultContent string 
+    var requirementType string
     resp, err := http.PostForm("http://140.115.54.82/luis.php",url.Values{"question": {q}})
     if err != nil {
         // handle error
     }
     defer resp.Body.Close()
-    u := map[string]interface{}{}
+    var u Data
     body, err := ioutil.ReadAll(resp.Body)
     // er := json.NewDecoder(strings.NewReader(body)).Decode(ff)
     json.Unmarshal(body, &u)
-    echo = u["requirementType"].(string)
+    
+    echo = (string)u.resultType
+    
+
 
     if(q=="give me bottun"){
       echo = "bottun"
