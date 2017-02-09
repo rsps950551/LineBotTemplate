@@ -195,7 +195,7 @@ func httpGet(q string) {
     er:=json.NewDecoder(resp.Body).Decode(&D)
     if er != nil {
         // handle error
-      echo = string(er)
+      echo = er
     } else {
       echo = string(D.resultQuestion)
     }
