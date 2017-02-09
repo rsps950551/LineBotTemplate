@@ -191,7 +191,8 @@ func httpGet(q string) {
     }
     defer resp.Body.Close()
     // D := Data{}
-    u := map[string]interface{}{}
+    var r interface{}
+
     body, err := ioutil.ReadAll(resp.Body)
     // er:=json.NewDecoder(resp.Body).Decode(&D)
     // if er != nil {
@@ -200,9 +201,34 @@ func httpGet(q string) {
     // } else {
     //   echo = string(D.resultQuestion)
     // }
-    json.Unmarshal(body, &u)
+    json.Unmarshal(body, &r)
     
-    
+    loli, ok := r.(map[string]interface{})
+
+       if ok {
+              for k, v := range loli {
+                     switch v2 := v.(type) {
+                            case string:
+                                   fmt.Println("Key：", k, "，Value：", v2, "，型別是 string")
+                                   echo := echo+"Key："+k+"Value："+v2
+                            case int:
+                                   fmt.Println("Key：", k, "，Value：", v2, "，型別是 int")
+                            case float64:
+                                   fmt.Println("Key：", k, "，Value：", v2, "，型別是 float64")
+                            case bool:
+                                   fmt.Println("Key：", k, "，Value：", v2, "，型別是 bool")
+                            case []interface{}:
+                                   fmt.Println(k, "是 陣列：", v2)
+                                   echo := echo+"是 陣列："
+                                   for i, iv := range v2 {
+                                          fmt.Println(i, "：", iv)
+                                     echo := echo+"Key："+i+"Value："+iv
+                                   }
+                            default:
+                                   fmt.Println(k, " 是其他型別...")
+                     }
+              }
+       }
     
     echo =  u["resultContent"].(string)
 
