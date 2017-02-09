@@ -222,7 +222,7 @@ func httpGet(q string) {
                                    echo := echo+"是 陣列："
                                    for i, iv := range v2 {
                                           fmt.Println(i, "：", iv)
-                                     echo := echo+"Key："+(string)i+"Value："+iv.(string)
+                                     echo := echo+"Value："+iv.(string)
                                    }
                             default:
                                    fmt.Println(k, " 是其他型別...")
