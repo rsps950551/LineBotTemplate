@@ -14,7 +14,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	//"io/ioutil"
 	"log"
   //"bytes"
 	"net/http"
