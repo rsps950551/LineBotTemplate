@@ -69,22 +69,22 @@ var echo string
 //   }
 // }`
 
-const GG =`{
-      "type": "confirm",
-      "text": "Are you sure?",
-      "actions": [
-          {
-            "type": "message",
-            "label": "Yes",
-            "text": "yes"
-          },
-          {
-            "type": "message",
-            "label": "No",
-            "text": "no"
-          }
-      ]
-	}`
+// const GG =`{
+//       "type": "confirm",
+//       "text": "Are you sure?",
+//       "actions": [
+//           {
+//             "type": "message",
+//             "label": "Yes",
+//             "text": "yes"
+//           },
+//           {
+//             "type": "message",
+//             "label": "No",
+//             "text": "no"
+//           }
+//       ]
+// 	}`
 
 
 type Data struct{
