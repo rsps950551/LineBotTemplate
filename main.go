@@ -86,7 +86,7 @@ var echo string
 //       ]
 // 	}`
 
-
+//
 type Data struct{
     resultType string `json:"resultType"`
     resultQuestion string `json:"resultQuestion"`
