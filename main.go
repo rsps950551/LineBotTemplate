@@ -193,7 +193,7 @@ func httpGet(q string) {
     defer resp.Body.Close()
     // D := Data{}
     var r =  map[string]interface{}{}
-
+    var resultContent []content
     body, err := ioutil.ReadAll(resp.Body)
     // er:=json.NewDecoder(resp.Body).Decode(&D)
     // if er != nil {
@@ -203,8 +203,8 @@ func httpGet(q string) {
     //   echo = string(D.resultQuestion)
     // }
     json.Unmarshal(body, &r)
-    
-    echo = string(bytes.IndexAny(body,"entity"))
+    json.Unmarshal(r["resultContent"], &resultContent)
+    echo = resultContent[0].entity
 
     if(q=="give me bottun"){
       echo = "bottun"
