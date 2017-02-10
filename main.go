@@ -194,8 +194,8 @@ func httpGet(q string) {
     }
     defer resp.Body.Close()
     // D := Data{}
-    var r =  map[string]interface{}{}
-    var resultContent []content
+    // var r =  map[string]interface{}{}
+    // var resultContent []content
     body, err := ioutil.ReadAll(resp.Body)
     // er:=json.NewDecoder(resp.Body).Decode(&D)
     // if er != nil {
