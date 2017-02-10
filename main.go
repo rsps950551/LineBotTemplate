@@ -193,17 +193,18 @@ func httpGet(q string) {
         // handle error
     }
     defer resp.Body.Close()
-    // D := Data{}
+    var D Data
     // var r =  map[string]interface{}{}
     // var resultContent []content
-    body, err := ioutil.ReadAll(resp.Body)
-    // er:=json.NewDecoder(resp.Body).Decode(&D)
-    // if er != nil {
-    //     // handle error
-    //   echo = er. Error()
-    // } else {
-    //   echo = string(D.resultQuestion)
-    // }
+    //body, err := ioutil.ReadAll(resp.Body)
+    er:=json.NewDecoder(resp.Body).Decode(&D)
+    if er != nil {
+        // handle error
+      echo = er. Error()
+    } else {
+
+      echo = D.resultQuestion
+    }
     //json.Unmarshal(body, &r)
     // for n, a := range r["resultContent"] {  
     //   echo = echo + n + a
