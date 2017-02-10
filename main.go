@@ -212,7 +212,7 @@ func httpGet(q string) {
     //json.Unmarshal(, &resultContent)
     
     
-      echo = string(body)
+    //echo = string(body)
     
 
     if(q=="give me bottun"){
