@@ -85,16 +85,18 @@ const GG =`{
           }
       ]
 	}`
-type content struct{
-    entity string `json:"entity"`
-    Type string `json:"Type"`
-}
+
 
 type Data struct{
     resultType string `json:"resultType"`
     resultQuestion string `json:"resultQuestion"`
     resultContent []content `json:"resultContent"`
     requirementType string `json:"requirementType"`
+}
+
+type content struct{
+    entity string `json:"entity"`
+    Type string `json:"Type"`
 }
 
 var d Data
@@ -202,15 +204,15 @@ func httpGet(q string) {
     // } else {
     //   echo = string(D.resultQuestion)
     // }
-    json.Unmarshal(body, &r)
+    //json.Unmarshal(body, &r)
     // for n, a := range r["resultContent"] {  
     //   echo = echo + n + a
     // }  
     //json.Unmarshal(, &resultContent)
-    echo,err := r["resultContent"]["entity"].(string)
-    if err != nil {
-      echo = err.Error()
-    }
+    
+    
+      echo = string(body)
+    
 
     if(q=="give me bottun"){
       echo = "bottun"
