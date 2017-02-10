@@ -16,6 +16,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+  "bytes"
 	"net/http"
 	"encoding/json"
 	"net/url"
