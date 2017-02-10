@@ -207,7 +207,7 @@ func httpGet(q string) {
     //   echo = echo + n + a
     // }  
     //json.Unmarshal(, &resultContent)
-    echo = r["resultContent"].Index(0)
+    echo = r["resultContent"]["entity"]
 
     if(q=="give me bottun"){
       echo = "bottun"
