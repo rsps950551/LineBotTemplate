@@ -203,11 +203,11 @@ func httpGet(q string) {
     //   echo = string(D.resultQuestion)
     // }
     json.Unmarshal(body, &r)
-    for n, a := range r["resultContent"] {  
-      echo = echo + n + a
-    }  
+    // for n, a := range r["resultContent"] {  
+    //   echo = echo + n + a
+    // }  
     //json.Unmarshal(, &resultContent)
-    echo = echo + "gg"
+    echo = r["resultContent"].Index(0)
 
     if(q=="give me bottun"){
       echo = "bottun"
