@@ -30,22 +30,22 @@ import (
 
 var bot *linebot.Client
 var echo string 
-var FF = []byte(`{
-      "Type": "confirm",
-      "text": "Are you sure?",
-      "actions": [
-          {
-            "type": "message",
-            "label": "Yes",
-            "text": "yes"
-          },
-          {
-            "type": "message",
-            "label": "No",
-            "text": "no"
-          }
-      ]
-	}`)
+// var FF = []byte(`{
+//       "Type": "confirm",
+//       "text": "Are you sure?",
+//       "actions": [
+//           {
+//             "type": "message",
+//             "label": "Yes",
+//             "text": "yes"
+//           },
+//           {
+//             "type": "message",
+//             "label": "No",
+//             "text": "no"
+//           }
+//       ]
+// 	}`)
 // var m json
 // const confirm = `
 // {
