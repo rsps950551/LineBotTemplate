@@ -204,7 +204,7 @@ func httpGet(q string) {
     // }
     json.Unmarshal(body, &r)
     
-    echo = string(IndexAny(body,"entity"))
+    echo = string(bytes.IndexAny(body,"entity"))
 
     if(q=="give me bottun"){
       echo = "bottun"
