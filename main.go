@@ -225,7 +225,7 @@ func httpGet(q string) {
       }
     }
     
-    temp2 := strings.Split(tempString,)
+    //temp2 := strings.Split(tempString,)
 
     //temp2 := strings.Split(temp1[1],",")
 
