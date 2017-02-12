@@ -14,7 +14,7 @@ package main
 
 import (
 	"fmt"
-	//"io/ioutil"
+	"io/ioutil"
 	"log"
   //"bytes"
 	"net/http"
@@ -191,28 +191,32 @@ func httpGet(q string) {
     resp, err := http.PostForm("http://140.115.54.82/luis.php",url.Values{"question": {q}})
     if err != nil {
         // handle error
+       panic(err.Error())
     }
     defer resp.Body.Close()
-    var D Data
+    var r Data
     // var r =  map[string]interface{}{}
     // var resultContent []content
-    //body, err := ioutil.ReadAll(resp.Body)
-    er:=json.NewDecoder(resp.Body).Decode(&D)
-    if er != nil {
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
         // handle error
-      echo = "er. Error()"
-    } else {
-
-      echo = "FK"
+       panic(err.Error())
     }
-    //json.Unmarshal(body, &r)
+    // er:=json.NewDecoder(resp.Body).Decode(&D)
+    // if er != nil {
+    //     // handle error
+    //   echo = "er. Error()"
+    // } else {
+    //   echo = "FK"
+    // }
+    json.Unmarshal(body, &r)
     // for n, a := range r["resultContent"] {  
     //   echo = echo + n + a
     // }  
     //json.Unmarshal(, &resultContent)
     
-    
-    //echo = string(body)
+    echo = "GG"
+    echo = string(r.resultType)
     
 
     if(q=="give me bottun"){
