@@ -194,8 +194,8 @@ func httpGet(q string) {
        panic(err.Error())
     }
     defer resp.Body.Close()
-    //var r Data
-    var r =  map[string]interface{}{}
+    var r Data
+    // var r =  map[string]interface{}{}
     // var resultContent []content
     body, err := ioutil.ReadAll(resp.Body)
     if err != nil {
@@ -218,9 +218,9 @@ func httpGet(q string) {
     
     
     
-    echo = r["resultType"].(string)
+    echo = string(r.resultType) + tempString
     
-    echo = echo + tempString
+    
 
     if(q=="give me bottun"){
       echo = "bottun"
