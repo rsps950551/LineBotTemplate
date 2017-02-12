@@ -211,11 +211,11 @@ func httpGet(q string) {
     // }
     // var tempString string
     // tempString =string(body) 
-    //json.Unmarshal(body, &r)
+    json.Unmarshal(body, &r)
     // for n, a := range r["resultContent"] {  
     //   echo = echo + n + a
     // }  
-    json.Unmarshal(, &resultContent)
+    
     
     
     echo = string(body)
