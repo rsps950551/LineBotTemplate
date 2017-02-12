@@ -237,8 +237,8 @@ func httpGet(q string) {
     // for n, a := range r["resultContent"] {  
     //   echo = echo + n + a
     // }  
-    echo = "resultType:"+ r["resultType"].(string) +"\n"
-    echo += "resultQuestion:"+r["resultQuestion"].(string) +"\n"
+    echo = "resultType: "+ r["resultType"].(string) +"\n"
+    echo += "resultQuestion: "+r["resultQuestion"].(string) +"\n"
     echo += "resultContent:" +"\n"
     e:= entity.Front()
     t:= Type.Front()
@@ -246,7 +246,7 @@ func httpGet(q string) {
     e = e.Next()
     t = t.Next()
     echo += e.Value.(string)+" "+t.Value.(string)+"\n"
-    echo += "requirementType" + r["requirementType"].(string)
+    echo += "requirementType: " + r["requirementType"].(string)
     
 
     if(q=="give me bottun"){
