@@ -20,7 +20,7 @@ import (
 	"net/http"
 	"encoding/json"
 	"net/url"
-  // "strings"
+  "strings"
 	// "database/sql"
 	"os"
 	"github.com/line/line-bot-sdk-go/linebot"
@@ -194,8 +194,8 @@ func httpGet(q string) {
        panic(err.Error())
     }
     defer resp.Body.Close()
-    var r Data
-    // var r =  map[string]interface{}{}
+    //var r Data
+    var r =  map[string]interface{}{}
     // var resultContent []content
     body, err := ioutil.ReadAll(resp.Body)
     if err != nil {
@@ -211,6 +211,10 @@ func httpGet(q string) {
     // }
     var tempString string
     tempString =string(body) 
+    var entity []string
+    //var Type []string
+    entity = string.Split(tempString,""entity":")
+
     json.Unmarshal(body, &r)
     // for n, a := range r["resultContent"] {  
     //   echo = echo + n + a
@@ -218,7 +222,7 @@ func httpGet(q string) {
     
     
     
-    echo = string(r.resultType) + tempString
+    echo = r["resultType"].(string) + entity[1]
     
     
 
