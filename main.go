@@ -210,11 +210,7 @@ func httpGet(q string) {
     //   echo = "FK"
     // }
     tempString :=string(body) 
-    err:=json.Unmarshal(body, &r)
-    if err != nil {
-        // handle error
-       panic(err.Error())
-    }
+    json.Unmarshal(body, &r)
     // for n, a := range r["resultContent"] {  
     //   echo = echo + n + a
     // }  
