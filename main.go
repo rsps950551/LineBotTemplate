@@ -200,10 +200,10 @@ func httpGet(q string) {
     er:=json.NewDecoder(resp.Body).Decode(&D)
     if er != nil {
         // handle error
-      echo = er. Error()
+      echo = "er. Error()"
     } else {
 
-      echo = D.resultQuestion
+      echo = D.resultQuestion +"FK"
     }
     //json.Unmarshal(body, &r)
     // for n, a := range r["resultContent"] {  
