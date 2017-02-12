@@ -215,7 +215,7 @@ func httpGet(q string) {
     //var entity []string
     //var Type []string
 
-    temp1 := strings.Split(tempString,"entity\"")
+    temp1 := strings.Split(tempString,"entity"+"\"")
     
     
     entity := list.New()
