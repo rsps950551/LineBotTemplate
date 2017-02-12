@@ -213,7 +213,7 @@ func httpGet(q string) {
     tempString =string(body) 
     var entity []string
     //var Type []string
-    entity = strings.Split(tempString,""entity":")
+    entity = strings.Split(tempString,'"'+'entity'+'":')
 
     json.Unmarshal(body, &r)
     // for n, a := range r["resultContent"] {  
@@ -222,7 +222,7 @@ func httpGet(q string) {
     
     
     
-    echo = r["resultType"].(string) + entity[1]
+    echo =  entity[1]
     
     
 
