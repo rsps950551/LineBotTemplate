@@ -237,10 +237,12 @@ func httpGet(q string) {
     // for n, a := range r["resultContent"] {  
     //   echo = echo + n + a
     // }  
-    
-        
-    echo = entity.Front().Value.(string)+Type.Front().Value.(string)
-    
+    echo = "resultType:"+ r["resultType"].(string) +"\n"
+    echo += "resultQuestion:"+r["resultQuestion"].(string) +"\n"
+    echo += "resultContent:" +"\n"
+    echo += entity.Front().Value.(string)+" "+Type.Front().Value.(string)+"\n"
+    echo += entity.Next().Value.(string)+" "+Type.Next().Value.(string)+"\n"
+    echo += "requirementType" + r["requirementType"].(string)
     
 
     if(q=="give me bottun"){
