@@ -18,7 +18,7 @@ import (
 	"log"
   //"bytes"
 	"net/http"
-	//"encoding/json"
+	"encoding/json"
 	"net/url"
   // "strings"
 	// "database/sql"
@@ -215,12 +215,12 @@ func httpGet(q string) {
     // for n, a := range r["resultContent"] {  
     //   echo = echo + n + a
     // }  
-    //json.Unmarshal(, &resultContent)
+    json.Unmarshal(, &resultContent)
     
     
     echo = string(body)
     
-    //echo = echo + tempString
+    echo = echo + tempString
 
     if(q=="give me bottun"){
       echo = "bottun"
