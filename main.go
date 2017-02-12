@@ -235,7 +235,7 @@ func httpGet(q string) {
     // }  
     
         
-    echo = string(entity.Front())
+    echo = entity.Front().(string)
     
     
 
