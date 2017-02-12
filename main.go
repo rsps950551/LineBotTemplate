@@ -203,7 +203,7 @@ func httpGet(q string) {
       echo = "er. Error()"
     } else {
 
-      echo = D.resultQuestion +"FK"
+      echo = "FK"
     }
     //json.Unmarshal(body, &r)
     // for n, a := range r["resultContent"] {  
