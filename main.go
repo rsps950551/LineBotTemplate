@@ -16,6 +16,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+  "container/list"
   //"bytes"
 	"net/http"
 	"encoding/json"
@@ -213,16 +214,17 @@ func httpGet(q string) {
     tempString =string(body) 
     //var entity []string
     //var Type []string
+
     temp1 := strings.Split(tempString,"entity")
-    v := len(temp1)-1
-    if v>0{
-      var ans [v]string
-      for i := 0; i < len(temp1); i++ {
-        if i>=1{
-          ans[i-1]=strings.Split(strings.Split(temp1[i],",")[0],":")[1]
-        }
+    
+    
+    entity := list.New()
+    for i := 0; i < len(temp1); i++ {
+      if i>=1{
+        entity.PushBack( strings.Split(strings.Split(temp1[i],",")[0],":")[1] )
       }
     }
+    
     
 
     //temp2 := strings.Split(temp1[1],",")
@@ -233,7 +235,7 @@ func httpGet(q string) {
     // }  
     
         
-    echo = ans[0]+ans[1]
+    echo = entity.Front()
     
     
 
