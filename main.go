@@ -18,7 +18,7 @@ import (
 	"log"
   //"bytes"
 	"net/http"
-	"encoding/json"
+	//"encoding/json"
 	"net/url"
   // "strings"
 	// "database/sql"
@@ -211,14 +211,14 @@ func httpGet(q string) {
     // }
     // var tempString string
     // tempString =string(body) 
-    json.Unmarshal(body, &r)
+    //json.Unmarshal(body, &r)
     // for n, a := range r["resultContent"] {  
     //   echo = echo + n + a
     // }  
     //json.Unmarshal(, &resultContent)
     
     
-    echo = r["resultType"].(string)
+    echo = string(body)
     
     //echo = echo + tempString
 
