@@ -216,15 +216,19 @@ func httpGet(q string) {
     //var Type []string
 
     temp1 := strings.Split(tempString,"entity")
-    
-    
+    temp2 := strings.Split(tempString,"Type")
     entity := list.New()
+    Type := list.New()
     for i := 0; i < len(temp1); i++ {
       if i>=1{
         entity.PushBack( strings.Split(strings.Split(temp1[i],"\",")[0],":\"")[1] )
       }
     }
-    
+    for i := 0; i < len(temp2); i++ {
+      if i>=1{
+        Type.PushBack( strings.Split(strings.Split(temp2[i],"\"}")[0],":\"")[1] )
+      }
+    }
     //temp2 := strings.Split(tempString,)
 
     //temp2 := strings.Split(temp1[1],",")
@@ -235,7 +239,7 @@ func httpGet(q string) {
     // }  
     
         
-    echo = entity.Front().Value.(string)
+    echo = entity.Front().Value.(string)+Type.Front().Value.(string)
     
     
 
