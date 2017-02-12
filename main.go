@@ -230,7 +230,7 @@ func httpGet(q string) {
     
     
     
-    echo =  len(ans)
+    echo = string(len(ans)) 
     
     
 
