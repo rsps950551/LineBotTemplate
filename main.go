@@ -214,10 +214,10 @@ func httpGet(q string) {
     //var entity []string
     //var Type []string
     temp1 := strings.Split(tempString,"entity")
-    var ans string
+    var ans []string
     for i := 0; i < len(temp1); i++ {
         if i>=1{
-          ans +=  strings.Split(strings.Split(temp1[i],",")[0],":")[1]
+          append(ans,strings.Split(strings.Split(temp1[i],",")[0],":")[1])  
         }
     }
 
@@ -230,7 +230,7 @@ func httpGet(q string) {
     
     
     
-    echo =  ans
+    echo =  len(ans)
     
     
 
