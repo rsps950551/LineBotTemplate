@@ -194,8 +194,8 @@ func httpGet(q string) {
        panic(err.Error())
     }
     defer resp.Body.Close()
-    var r Data
-    // var r =  map[string]interface{}{}
+    //var r Data
+    var r =  map[string]interface{}{}
     // var resultContent []content
     body, err := ioutil.ReadAll(resp.Body)
     if err != nil {
@@ -209,14 +209,19 @@ func httpGet(q string) {
     // } else {
     //   echo = "FK"
     // }
-    json.Unmarshal(body, &r)
+    tempString :=string(body) 
+    err:=json.Unmarshal(body, &r)
+    if err != nil {
+        // handle error
+       panic(err.Error())
+    }
     // for n, a := range r["resultContent"] {  
     //   echo = echo + n + a
     // }  
     //json.Unmarshal(, &resultContent)
     
-    echo = "GG"
-    echo = string(r.resultType)
+    
+    echo = r["resultType"].(string)+tempString
     
 
     if(q=="give me bottun"){
