@@ -209,8 +209,8 @@ func httpGet(q string) {
     // } else {
     //   echo = "FK"
     // }
-    // var tempString string
-    // tempString =string(body) 
+    var tempString string
+    tempString =string(body) 
     json.Unmarshal(body, &r)
     // for n, a := range r["resultContent"] {  
     //   echo = echo + n + a
@@ -218,7 +218,7 @@ func httpGet(q string) {
     
     
     
-    echo = string(body)
+    echo = r["resultType"].(string)
     
     echo = echo + tempString
 
