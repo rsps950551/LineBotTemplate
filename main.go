@@ -240,12 +240,11 @@ func httpGet(q string) {
     echo = "resultType: "+ r["resultType"].(string) +"\n"
     echo += "resultQuestion: "+r["resultQuestion"].(string) +"\n"
     echo += "resultContent:" +"\n"
-    e:= entity.Front()
     t:= Type.Front()
-    echo += e.Value.(string)+" "+t.Value.(string)+"\n"
-    e = e.Next()
-    t = t.Next()
-    echo += e.Value.(string)+" "+t.Value.(string)+"\n"
+    for e:= entity.Front();e!=nil;e = e.Next(){
+      echo += e.Value.(string)+" "+t.Value.(string)+"\n"
+      t = t.Next()
+    }
     echo += "requirementType: " + r["requirementType"].(string)
     
 
