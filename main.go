@@ -191,6 +191,7 @@ func httpGet(q string) {
     // var resultQuestion string
     // var resultContent string 
     // var requirementType string
+    echo = "OK"
     op = ""
     bottun = false
     resp, err := http.PostForm("http://140.115.54.82/luis.php",url.Values{"question": {q}})
