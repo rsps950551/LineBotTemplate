@@ -242,20 +242,15 @@ func httpGet(q string) {
 
     if r["resultType"].(string) == "none" {
       echo = "我不了解你在說什麼～@@"
-    }
-    else if r["resultType"].(string) == "greeting"{
+    } else if r["resultType"].(string) == "greeting" {
       echo = "你好！我是LUIS！我可以提供您數學的教材或是練習題喔！"
-    }
-    else if r["resultType"].(string) == "appreciation"{
+    } else if r["resultType"].(string) == "appreciation" {
       echo = "歡迎您再次使用LUIS!我很樂意再次提供您服務！"
-    }
-    else if r["resultType"].(string) == "connectionError"{
+    } else if r["resultType"].(string) == "connectionError" {
       echo = "對不起，我出了點問題，現在沒辦法回答你問題@@"
-    }
-    else if r["resultType"].(string) == "unknown"{
+    } else if r["resultType"].(string) == "unknown" {
       echo = "不好意思，我不知道你問的定理是什麼QQ"
-    }
-    else if r["resultType"].(string) == "question"{
+    } else if r["resultType"].(string) == "question" {
       if r["requirementType"] == "none" {
         bottun = true
         for e:= entity.Front();e!=nil;e = e.Next(){
@@ -305,7 +300,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				// mysql()
 				//message.ID+":"+message.Text
         if bottun {
-           _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
+           // _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
            _, err = bot.ReplyMessage(event.ReplyToken, templatemessgage).Do()
         } else {
            _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
