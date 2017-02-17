@@ -31,6 +31,8 @@ import (
 
 var bot *linebot.Client
 var echo string 
+var op string
+var bottun bool
 // var FF = []byte(`{
 //       "Type": "confirm",
 //       "text": "Are you sure?",
@@ -152,7 +154,7 @@ func main() {
 	port := os.Getenv("PORT")
 	addr := fmt.Sprintf(":%s", port)
 	http.ListenAndServe(addr, nil)	
-
+  bottun = false
 }
 
 // func mysql(){
@@ -237,28 +239,51 @@ func httpGet(q string) {
     // for n, a := range r["resultContent"] {  
     //   echo = echo + n + a
     // }  
-    echo = "resultType: "+ r["resultType"].(string) +"\n"
-    echo += "resultQuestion: "+r["resultQuestion"].(string) +"\n"
-    echo += "resultContent:" +"\n"
-    t:= Type.Front()
-    for e:= entity.Front();e!=nil;e = e.Next(){
-      echo += e.Value.(string)+" "+t.Value.(string)+"\n"
-      t = t.Next()
+
+    if r["resultType"].(string) == "none" {
+      echo = "我不了解你在說什麼～@@"
     }
-    echo += "requirementType: " + r["requirementType"].(string)
+    else if r["resultType"].(string) == "greeting"{
+      echo = "你好！我是LUIS！我可以提供您數學的教材或是練習題喔！"
+    }
+    else if r["resultType"].(string) == "appreciation"{
+      echo = "歡迎您再次使用LUIS!我很樂意再次提供您服務！"
+    }
+    else if r["resultType"].(string) == "connectionError"{
+      echo = "對不起，我出了點問題，現在沒辦法回答你問題@@"
+    }
+    else if r["resultType"].(string) == "unknown"{
+      echo = "不好意思，我不知道你問的定理是什麼QQ"
+    }
+    else if r["resultType"].(string) == "question"{
+      if r["requirementType"] == "none" {
+        bottun = true
+        for e:= entity.Front();e!=nil;e = e.Next(){
+         op += e.Value.(string)+" "
+        }
+      }
+    }
+    //test~~~~~~
+    // echo = "resultType: "+ r["resultType"].(string) +"\n"
+    // echo += "resultQuestion: "+r["resultQuestion"].(string) +"\n"
+    // echo += "resultContent:" +"\n"
+    // t:= Type.Front()
+    // for e:= entity.Front();e!=nil;e = e.Next(){
+    //   echo += e.Value.(string)+" "+t.Value.(string)+"\n"
+    //   t = t.Next()
+    // }
+    // echo += "requirementType: " + r["requirementType"].(string)
     
 
-    if(q=="give me bottun"){
-      echo = "bottun"
-    }
+    
 }
 
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	events, err := bot.ParseRequest(r)
-  leftBtn := linebot.NewMessageTemplateAction("left", "left clicked")
-  rightBtn := linebot.NewMessageTemplateAction("right", "right clicked")
+  leftBtn := linebot.NewMessageTemplateAction("練習題", "我要練習題" +op)
+  rightBtn := linebot.NewMessageTemplateAction("教材", "我要教材"+op)
 
-  template := linebot.NewConfirmTemplate("Hello World", leftBtn, rightBtn)
+  template := linebot.NewConfirmTemplate("請問是需要練習題還是教材?", leftBtn, rightBtn)
 
   templatemessgage := linebot.NewTemplateMessage("Sorry :(, please update your app.", template)
 	if err != nil {
@@ -279,7 +304,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				httpGet(message.Text)
 				// mysql()
 				//message.ID+":"+message.Text
-        if(echo == "bottun"){
+        if bottun {
+           _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
            _, err = bot.ReplyMessage(event.ReplyToken, templatemessgage).Do()
         } else {
            _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
