@@ -192,7 +192,6 @@ func httpGet(q string) {
     // var resultContent string 
     // var requirementType string
     echo = "OK"
-    op = ""
     bottun = false
     resp, err := http.PostForm("http://140.115.54.82/luis.php",url.Values{"question": {q}})
     if err != nil {
@@ -278,7 +277,7 @@ func httpGet(q string) {
 
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	events, err := bot.ParseRequest(r)
-  leftBtn := linebot.NewMessageTemplateAction("練習題", "我要練習題 " +op)
+  leftBtn := linebot.NewMessageTemplateAction("練習題", "我要練習題 "+op)
   rightBtn := linebot.NewMessageTemplateAction("教材", "我要教材 "+op)
 
   template := linebot.NewConfirmTemplate("請問是需要練習題還是教材?", leftBtn, rightBtn)
@@ -305,8 +304,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
         if bottun {
            // _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
            _, err = bot.ReplyMessage(event.ReplyToken, templatemessgage).Do()
+           
         } else {
            _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
+           op = ""
         }
 				
           
