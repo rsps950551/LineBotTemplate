@@ -303,8 +303,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
            //_, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
             var ff string
             var gg string
-            ff = "我要練習題"+op
-            gg = "我要教材"+op
+            ff = "我要"+op+"的練習題"
+            gg = "我要"+op+"教材"
             leftBtn := linebot.NewMessageTemplateAction("練習題", ff)
             rightBtn := linebot.NewMessageTemplateAction("教材", gg)
 
