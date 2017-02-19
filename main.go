@@ -280,12 +280,13 @@ func httpGet(q string) {
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	events, err := bot.ParseRequest(r)
   
-  // leftBtn := linebot.NewMessageTemplateAction("練習題", "我要練習題"+op)
-  // rightBtn := linebot.NewMessageTemplateAction("教材", "我要教材"+op)
+  leftBtn := linebot.NewMessageTemplateAction("練習題", "我要練習題"+op)
+  rightBtn := linebot.NewMessageTemplateAction("教材", "我要教材"+op)
 
-  // template := linebot.NewConfirmTemplate("請問是需要練習題還是教材?", leftBtn, rightBtn)
+  template := linebot.NewConfirmTemplate("請問是需要練習題還是教材?", leftBtn, rightBtn)
 
-  // templatemessgage := linebot.NewTemplateMessage("Sorry :(, please update your app.", template)
+  templatemessgage := linebot.NewTemplateMessage("Sorry :(, please update your app.", template)
+  
 	if err != nil {
 		if err == linebot.ErrInvalidSignature {
 			w.WriteHeader(400)
