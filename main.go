@@ -257,8 +257,7 @@ func httpGet(q string) {
         bottun = true
         for e:= entity.Front();e!=nil;e = e.Next(){
          op += " "
-         op += e.Value.(string)
-         echo +=op 
+         op += e.Value.(string) 
         }
       } 
     }
@@ -280,13 +279,7 @@ func httpGet(q string) {
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	events, err := bot.ParseRequest(r)
   
-  leftBtn := linebot.NewMessageTemplateAction("練習題", "我要練習題"+op)
-  rightBtn := linebot.NewMessageTemplateAction("教材", "我要教材"+op)
 
-  template := linebot.NewConfirmTemplate("請問是需要練習題還是教材?", leftBtn, rightBtn)
-
-  templatemessgage := linebot.NewTemplateMessage("Sorry :(, please update your app.", template)
-  
 	if err != nil {
 		if err == linebot.ErrInvalidSignature {
 			w.WriteHeader(400)
@@ -307,6 +300,16 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//message.ID+":"+message.Text
         if bottun {
            //_, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
+            var ff string
+            var gg string
+            ff = "我要練習題"+op
+            gg = "我要教材"+op
+            leftBtn := linebot.NewMessageTemplateAction("練習題", ff)
+            rightBtn := linebot.NewMessageTemplateAction("教材", gg)
+
+            template := linebot.NewConfirmTemplate("請問是需要練習題還是教材?", leftBtn, rightBtn)
+
+            templatemessgage := linebot.NewTemplateMessage("Sorry :(, please update your app.", template)
             _, err = bot.ReplyMessage(event.ReplyToken, templatemessgage).Do()
            //op=""
 
