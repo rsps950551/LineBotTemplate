@@ -259,7 +259,7 @@ func httpGet(q string) {
          op += e.Value.(string)+" "
         }
       } else {
-        OP = ""
+        op = ""
       }
     }
     //test~~~~~~
