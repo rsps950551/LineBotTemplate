@@ -296,6 +296,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
+        
         if op!= ""{
           echo ="OK"
           bottun = false
@@ -321,7 +322,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
         } else {
            _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
-           
+           op=""
         }
 				
           
