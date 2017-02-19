@@ -258,9 +258,7 @@ func httpGet(q string) {
         for e:= entity.Front();e!=nil;e = e.Next(){
          op += e.Value.(string)+" "
         }
-      } else {
-        op = ""
-      }
+      } 
     }
     //test~~~~~~
     // echo = "resultType: "+ r["resultType"].(string) +"\n"
@@ -281,8 +279,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	events, err := bot.ParseRequest(r)
   var gg string 
   gg = op
-  leftBtn := linebot.NewMessageTemplateAction("練習題", "我要練習題 "+gg)
-  rightBtn := linebot.NewMessageTemplateAction("教材", "我要教材 "+gg)
+  leftBtn := linebot.NewMessageTemplateAction("練習題"+gg, "我要練習題 "+gg)
+  rightBtn := linebot.NewMessageTemplateAction("教材"+gg, "我要教材 "+gg)
 
   template := linebot.NewConfirmTemplate("請問是需要練習題還是教材?", leftBtn, rightBtn)
 
@@ -308,6 +306,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
         if bottun {
            // _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
            _, err = bot.ReplyMessage(event.ReplyToken, templatemessgage).Do()
+           //op=""
 
         } else {
            _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
