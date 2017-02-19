@@ -299,9 +299,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
-        if message.Text == ff{
-          echo ="OK"
-        } else if message.Text == gg{
+        if op!= ""{
           echo ="OK"
         } else {
           httpGet(message.Text)
