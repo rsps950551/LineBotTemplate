@@ -193,6 +193,7 @@ func httpGet(q string) {
     // var requirementType string
     echo = "OK"
     bottun = false
+    op = ""
     resp, err := http.PostForm("http://140.115.54.82/luis.php",url.Values{"question": {q}})
     if err != nil {
         // handle error
