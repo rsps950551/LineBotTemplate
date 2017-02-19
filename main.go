@@ -257,7 +257,7 @@ func httpGet(q string) {
       if r["requirementType"].(string) == "none" {
         bottun = true
         for e:= entity.Front();e!=nil;e = e.Next(){
-         op += " "
+         //op += " "
          op += e.Value.(string) 
         }
       } 
@@ -304,7 +304,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
             var ff string
             var gg string
             ff = "我要"+op+"的練習題"
-            gg = "我要"+op+"教材"
+            gg = "我要"+op+"的教材"
             leftBtn := linebot.NewMessageTemplateAction("練習題", ff)
             rightBtn := linebot.NewMessageTemplateAction("教材", gg)
 
