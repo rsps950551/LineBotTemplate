@@ -305,8 +305,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				// mysql()
 				//message.ID+":"+message.Text
         if bottun {
-           // _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
-           _, err = bot.ReplyMessage(event.ReplyToken, templatemessgage).Do()
+           _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
+           // _, err = bot.ReplyMessage(event.ReplyToken, templatemessgage).Do()
            //op=""
 
         } else {
