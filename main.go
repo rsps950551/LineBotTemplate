@@ -277,10 +277,9 @@ func httpGet(q string) {
 
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	events, err := bot.ParseRequest(r)
-  var gg string 
-  gg = op
-  leftBtn := linebot.NewMessageTemplateAction("練習題"+gg, "我要練習題 "+gg)
-  rightBtn := linebot.NewMessageTemplateAction("教材"+gg, "我要教材 "+gg)
+  
+  leftBtn := linebot.NewMessageTemplateAction("練習題"+op, "我要練習題 "+op)
+  rightBtn := linebot.NewMessageTemplateAction("教材"+op, "我要教材 "+op)
 
   template := linebot.NewConfirmTemplate("請問是需要練習題還是教材?", leftBtn, rightBtn)
 
