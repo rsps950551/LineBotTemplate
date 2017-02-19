@@ -256,7 +256,9 @@ func httpGet(q string) {
       if r["requirementType"] == "none" {
         bottun = true
         for e:= entity.Front();e!=nil;e = e.Next(){
-         op += e.Value.(string)+" "
+         op += " "
+         op += e.Value.(string)
+
         }
       } 
     }
