@@ -253,12 +253,12 @@ func httpGet(q string) {
     } else if r["resultType"].(string) == "unknown" {
       echo = "不好意思，我不知道你問的定理是什麼QQ"
     } else if r["resultType"].(string) == "question" {
-      if r["requirementType"] == "none" {
+      if r["requirementType"].(string) == "none" {
         bottun = true
         for e:= entity.Front();e!=nil;e = e.Next(){
          op += " "
          op += e.Value.(string)
-
+         echo +=op 
         }
       } 
     }
