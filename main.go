@@ -280,10 +280,7 @@ func httpGet(q string) {
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	events, err := bot.ParseRequest(r)
 
-  var ff string
-  var gg string
-  ff = "我要"+op+"的練習題"
-  gg = "我要"+op+"的教材"
+  
 	if err != nil {
 		if err == linebot.ErrInvalidSignature {
 			w.WriteHeader(400)
@@ -308,8 +305,11 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				// mysql()
 				//message.ID+":"+message.Text
         if bottun {
-           //_, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
-            
+           //_, err = bot.ReplyMessa  ge(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
+            var ff string
+            var gg string
+            ff = "我要"+op+"的練習題"
+            gg = "我要"+op+"的教材"
             leftBtn := linebot.NewMessageTemplateAction("練習題", ff)
             rightBtn := linebot.NewMessageTemplateAction("教材", gg)
 
