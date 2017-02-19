@@ -301,6 +301,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			case *linebot.TextMessage:
         if op!= ""{
           echo ="OK"
+          bottun = false
         } else {
           httpGet(message.Text)
         }
