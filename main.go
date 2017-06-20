@@ -21,7 +21,7 @@ import (
 	"net/http"
 	//"encoding/json"
 	//"net/url"
-  //"strings"
+  "strings"
 	// "database/sql"
 	"os"
 	"github.com/line/line-bot-sdk-go/linebot"
@@ -205,6 +205,7 @@ func httpGet(q string) {
        panic(err.Error())
     }
     
+    echo = string(body) 
 
     //------------for Luis
     // var r =  map[string]interface{}{}
