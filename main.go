@@ -186,94 +186,70 @@ func main() {
 // 	}
 // }
 func httpGet(q string) {
-	//encodeurl:= url.QueryEscape("http://140.115.54.82/luis.php?question="+q)
-    // var resultType string
-    // var resultQuestion string
-    // var resultContent string 
-    // var requirementType string
+	
     echo = "OK"
     bottun = false
     op = ""
-    resp, err := http.PostForm("http://140.115.54.82/luis.php",url.Values{"question": {q}})
+    resp, err := http.Get("http://140.115.54.93:54321/chatbot?q="+q)
     if err != nil {
         // handle error
        panic(err.Error())
     }
     defer resp.Body.Close()
-    //var r Data
-    var r =  map[string]interface{}{}
-    // var resultContent []content
+    
+    
+    
     body, err := ioutil.ReadAll(resp.Body)
     if err != nil {
         // handle error
        panic(err.Error())
     }
-    // er:=json.NewDecoder(resp.Body).Decode(&D)
-    // if er != nil {
-    //     // handle error
-    //   echo = "er. Error()"
-    // } else {
-    //   echo = "FK"
-    // }
-    var tempString string
-    tempString =string(body) 
-    //var entity []string
-    //var Type []string
-
-    temp1 := strings.Split(tempString,"entity")
-    temp2 := strings.Split(tempString,"\"Type")
-    entity := list.New()
-    Type := list.New()
-    for i := 0; i < len(temp1); i++ {
-      if i>=1{
-        entity.PushBack( strings.Split(strings.Split(temp1[i],"\",")[0],":\"")[1] )
-      }
-    }
-    for i := 0; i < len(temp2); i++ {
-      if i>=1{
-        Type.PushBack( strings.Split(strings.Split(temp2[i],"\"}")[0],":\"")[1] )
-      }
-    }
-    //temp2 := strings.Split(tempString,)
-
-    //temp2 := strings.Split(temp1[1],",")
-
-    json.Unmarshal(body, &r)
-    // for n, a := range r["resultContent"] {  
-    //   echo = echo + n + a
-    // }  
-
-    if r["resultType"].(string) == "none" {
-      echo = "我不了解你在說什麼～@@"
-    } else if r["resultType"].(string) == "greeting" {
-      echo = "你好！我是LUIS！我可以提供您數學的教材或是練習題喔！"
-    } else if r["resultType"].(string) == "appreciation" {
-      echo = "歡迎您再次使用LUIS!我很樂意再次提供您服務！"
-    } else if r["resultType"].(string) == "connectionError" {
-      echo = "對不起，我出了點問題，現在沒辦法回答你問題@@"
-    } else if r["resultType"].(string) == "unknown" {
-      echo = "不好意思，我不知道你問的定理是什麼QQ"
-    } else if r["resultType"].(string) == "question" {
-      if r["requirementType"].(string) == "none" {
-        bottun = true
-        for e:= entity.Front();e!=nil;e = e.Next(){
-         //op += " "
-         op += e.Value.(string) 
-        }
-      } 
-    }
-    //test~~~~~~
-    // echo = "resultType: "+ r["resultType"].(string) +"\n"
-    // echo += "resultQuestion: "+r["resultQuestion"].(string) +"\n"
-    // echo += "resultContent:" +"\n"
-    // t:= Type.Front()
-    // for e:= entity.Front();e!=nil;e = e.Next(){
-    //   echo += e.Value.(string)+" "+t.Value.(string)+"\n"
-    //   t = t.Next()
-    // }
-    // echo += "requirementType: " + r["requirementType"].(string)
     
 
+    //------------for Luis
+    // var r =  map[string]interface{}{}
+    // var tempString string
+    // tempString =string(body) 
+   
+
+    // temp1 := strings.Split(tempString,"entity")
+    // temp2 := strings.Split(tempString,"\"Type")
+    // entity := list.New()
+    // Type := list.New()
+    // for i := 0; i < len(temp1); i++ {
+    //   if i>=1{
+    //     entity.PushBack( strings.Split(strings.Split(temp1[i],"\",")[0],":\"")[1] )
+    //   }
+    // }
+    // for i := 0; i < len(temp2); i++ {
+    //   if i>=1{
+    //     Type.PushBack( strings.Split(strings.Split(temp2[i],"\"}")[0],":\"")[1] )
+    //   }
+    // }
+    // json.Unmarshal(body, &r)
+    
+
+    // if r["resultType"].(string) == "none" {
+    //   echo = "我不了解你在說什麼～@@"
+    // } else if r["resultType"].(string) == "greeting" {
+    //   echo = "你好！我是LUIS！我可以提供您數學的教材或是練習題喔！"
+    // } else if r["resultType"].(string) == "appreciation" {
+    //   echo = "歡迎您再次使用LUIS!我很樂意再次提供您服務！"
+    // } else if r["resultType"].(string) == "connectionError" {
+    //   echo = "對不起，我出了點問題，現在沒辦法回答你問題@@"
+    // } else if r["resultType"].(string) == "unknown" {
+    //   echo = "不好意思，我不知道你問的定理是什麼QQ"
+    // } else if r["resultType"].(string) == "question" {
+    //   if r["requirementType"].(string) == "none" {
+    //     bottun = true
+    //     for e:= entity.Front();e!=nil;e = e.Next(){
+         
+    //      op += e.Value.(string) 
+    //     }
+    //   } 
+    // }
+    
+    //-----------------for luis
     
 }
 
