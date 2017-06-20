@@ -191,7 +191,8 @@ func httpGet(q string) {
     echo = "OK"
     bottun = false
     op = ""
-    resp, err := http.Get("http://140.115.54.93:54321/chatbot?q="+utf8.DecodeLastRuneInString(q))
+    r, size := utf8.DecodeLastRuneInString(q)
+    resp, err := http.Get("http://140.115.54.93:54321/chatbot?q="+r)
     if err != nil {
         // handle error
        panic(err.Error())
