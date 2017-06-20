@@ -16,12 +16,12 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
-  "container/list"
+  //"container/list"
   //"bytes"
 	"net/http"
-	"encoding/json"
-	"net/url"
-  "strings"
+	//"encoding/json"
+	//"net/url"
+  //"strings"
 	// "database/sql"
 	"os"
 	"github.com/line/line-bot-sdk-go/linebot"
@@ -198,7 +198,7 @@ func httpGet(q string) {
     defer resp.Body.Close()
     
     
-    
+     
     body, err := ioutil.ReadAll(resp.Body)
     if err != nil {
         // handle error
