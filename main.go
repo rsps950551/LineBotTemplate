@@ -21,7 +21,7 @@ import (
 	"net/http"
 	//"encoding/json"
 	//"net/url"
-  "strings"
+  //"strings"
 	// "database/sql"
 	"os"
 	"github.com/line/line-bot-sdk-go/linebot"
