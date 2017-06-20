@@ -16,6 +16,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+  "unicode/utf8"
   //"container/list"
   //"bytes"
 	"net/http"
@@ -190,7 +191,7 @@ func httpGet(q string) {
     echo = "OK"
     bottun = false
     op = ""
-    resp, err := http.Get("http://140.115.54.93:54321/chatbot?q="+q)
+    resp, err := http.Get("http://140.115.54.93:54321/chatbot?q="+utf8.DecodeLastRuneInString(q))
     if err != nil {
         // handle error
        panic(err.Error())
