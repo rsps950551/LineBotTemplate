@@ -191,8 +191,8 @@ func httpGet(q string) {
     echo = "OK"
     bottun = false
     op = ""
-    r, size := utf8.DecodeLastRuneInString("http://140.115.54.93:54321/chatbot?q="+q)
-    resp, err := http.Get(r)
+    
+    resp, err := http.Get("http://140.115.54.93:54321/chatbot?q=安安")
     if err != nil {
         // handle error
        panic(err.Error())
@@ -280,6 +280,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
           echo ="OK"
           bottun = false
         } else {
+
           httpGet(message.Text)
         }
 				// mysql()
