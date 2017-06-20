@@ -16,7 +16,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
-  "unicode/utf8"
+  //"unicode/utf8"
   //"container/list"
   //"bytes"
 	"net/http"
