@@ -301,7 +301,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
            //op=""
 
         } else {
-           _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo+" "+event.source.userID)).Do()
+           _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo+" "+event)).Do()
            // _, err = bot.PushMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
            op=""
         }
