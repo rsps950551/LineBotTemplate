@@ -208,7 +208,7 @@ func httpGet(q string) {
     }
     
     echo = string(body) 
-
+    _, err = bot.PushMessage("Uf6263c4b814700c680228b8b64a27dd6", linebot.NewTextMessage(echo)).Do()
     //------------for Luis
     // var r =  map[string]interface{}{}
     // var tempString string
