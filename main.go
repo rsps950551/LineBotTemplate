@@ -208,6 +208,7 @@ func httpGet(q string) {
     }
     
     echo = string(body) 
+    _, err = bot.PushMessage("Uf6263c4b814700c680228b8b64a27dd6", linebot.NewTextMessage(q)).Do()
     _, err = bot.PushMessage("Uf6263c4b814700c680228b8b64a27dd6", linebot.NewTextMessage(echo)).Do()
     if err != nil {
         // handle error
@@ -305,7 +306,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
            //op=""
 
         } else {
-           _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo+" "+string(event.Source.UserID))).Do()
+           _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
            // _, err = bot.PushMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
            op=""
         }
