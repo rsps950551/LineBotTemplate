@@ -34,63 +34,7 @@ var bot *linebot.Client
 var echo string 
 var op string
 var bottun bool
-// var FF = []byte(`{
-//       "Type": "confirm",
-//       "text": "Are you sure?",
-//       "actions": [
-//           {
-//             "type": "message",
-//             "label": "Yes",
-//             "text": "yes"
-//           },
-//           {
-//             "type": "message",
-//             "label": "No",
-//             "text": "no"
-//           }
-//       ]
-// 	}`)
-// var m json
-// const confirm = `
-// {
-//   "type": "template",
-//   "altText": "this is a confirm template",
-//   "template": {
-//       "type": "confirm",
-//       "text": "Are you sure?",
-//       "actions": [
-//           {
-//             "type": "message",
-//             "label": "Yes",
-//             "text": "yes"
-//           },
-//           {
-//             "type": "message",
-//             "label": "No",
-//             "text": "no"
-//           }
-//       ]
-//   }
-// }`
 
-// const GG =`{
-//       "type": "confirm",
-//       "text": "Are you sure?",
-//       "actions": [
-//           {
-//             "type": "message",
-//             "label": "Yes",
-//             "text": "yes"
-//           },
-//           {
-//             "type": "message",
-//             "label": "No",
-//             "text": "no"
-//           }
-//       ]
-// 	}`
-
-//
 type Data struct{
     resultType string `json:"resultType"`
     resultQuestion string `json:"resultQuestion"`
@@ -104,58 +48,17 @@ type content struct{
 }
 
 var d Data
-// type actions struct {
-//        type string
-//        label string
-//        text string
-// }
 
-// type template struct { 
-//        type string
-//        text string
-//        actions [2]actions
-// }
-
-// type confirm struct {
-//        type string 
-//        altText string
-//        template template
-// }
-
-// var FF template
 
 func main() {
 	var err error
- //  var y = map[string]interface{}{
- //        "type": "message",
- //        "label": "Yes",
- //        "text": "yes",
- //      }
- //  var n = map[string]interface{}{
- //        "type": "message",
- //        "label": "No",
- //        "text": "no",
- //    }
- //  // var t = template{"confirm","FF",{n,y}}
-	// // json.Unmarshal([]byte(GG), &FF)
- //  var cacheContent = map[string]interface{}{
- //    "type": "confirm",
- //    "text": "Are you sure?",
- //    "actions":map[string]interface{}{
- //        "type": "message",
- //        "label": "Yes",
- //        "text": "yes",
- //      },
- //  }  
-  // m, err := json.Marshal(cacheContent)
-	//json.Unmarshal(FF, &m)
 	bot, err = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
 	log.Println("Bot:", bot, " err:", err)
 	http.HandleFunc("/callback", callbackHandler)
 	port := os.Getenv("PORT")
 	addr := fmt.Sprintf(":%s", port)
 	http.ListenAndServe(addr, nil)	
-  bottun = false
+    bottun = false
 }
 
 // func mysql(){
