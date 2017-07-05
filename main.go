@@ -111,12 +111,18 @@ func httpGet(q string) {
     }
     
     echo = string(body) 
-    _, err = bot.PushMessage("Uf6263c4b814700c680228b8b64a27dd6", linebot.NewTextMessage(q)).Do()
-    _, err = bot.PushMessage("Uf6263c4b814700c680228b8b64a27dd6", linebot.NewTextMessage(echo)).Do()
-    if err != nil {
+
+    if echo == "正在為您轉接"{
+        _, err = bot.PushMessage("Uf6263c4b814700c680228b8b64a27dd6", linebot.NewTextMessage(q)).Do()
+        if err != nil {
         // handle error
-       echo = err.Error()
+        echo = err.Error()
+        }   
     }
+   
+    _, err = bot.PushMessage("Uf6263c4b814700c680228b8b64a27dd6", linebot.NewTextMessage(echo)).Do()
+   
+    
     //------------for Luis
     // var r =  map[string]interface{}{}
     // var tempString string
@@ -187,6 +193,14 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
         if op!= ""{
           echo ="OK"
           bottun = false
+
+
+        } else if event.Source.UserID == "Uf6263c4b814700c680228b8b64a27dd6"{
+            _, err = bot.PushMessage("Uf6263c4b814700c680228b8b64a27dd6", linebot.NewTextMessage(q)).Do()
+            if err != nil {
+            // handle error
+            echo = err.Error()
+            }   
         } else {
 
           httpGet(message.Text)
