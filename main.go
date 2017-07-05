@@ -199,6 +199,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
             _, err = bot.PushMessage("Uf6263c4b814700c680228b8b64a27dd6", linebot.NewTextMessage(q)).Do()
             if err != nil {
             // handle error
+            //    ..
             echo = err.Error()
             }   
         } else {
