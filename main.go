@@ -89,13 +89,13 @@ func main() {
 // 		dbinfo=col1
 // 	}
 // }
-func httpGet(q string) {
+func httpGet(q string , id string) {
 	
     echo = "OK"
     bottun = false
     op = ""
     
-    resp, err := http.Get("http://140.115.54.93:54321/chatbot?q="+q)
+    resp, err := http.Get("http://140.115.54.93:54321/chatbot?q="+q+"&id="+id)
     if err != nil {
         // handle error
        panic(err.Error())
@@ -204,7 +204,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
             }   
         } else {
 
-          httpGet(message.Text)
+          httpGet(message.Text,event.Source.UserID)
         }
 				// mysql()
 				//message.ID+":"+message.Text
