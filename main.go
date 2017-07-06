@@ -195,7 +195,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
           bottun = false
 
 
-        } else if event.Source.UserID == "Uf6263c4b814700c680228b8b64a27dd6"{
+        } else if event.Source.UserID == ""{
             _, err = bot.PushMessage("Uf6263c4b814700c680228b8b64a27dd6", linebot.NewTextMessage(message.Text)).Do()
             if err != nil {
             // handle error
