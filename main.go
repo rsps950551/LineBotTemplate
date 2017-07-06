@@ -120,7 +120,7 @@ func httpGet(q string , id string) {
         }   
     }
    
-    _, err = bot.PushMessage("Uf6263c4b814700c680228b8b64a27dd6", linebot.NewTextMessage(echo)).Do()
+    // _, err = bot.PushMessage("Uf6263c4b814700c680228b8b64a27dd6", linebot.NewTextMessage(echo)).Do()
    
     
     //------------for Luis
