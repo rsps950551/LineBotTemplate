@@ -94,6 +94,8 @@ func httpGet(q string , id string) {
     echo = "OK"
     bottun = false
     op = ""
+
+    q = strings.Replace(q, " ", ",", -1)
     
     resp, err := http.Get("http://140.115.54.93:54321/chatbot?q="+q+"&id="+id)
     if err != nil {
