@@ -95,7 +95,7 @@ func httpGet(q string , id string) {
     bottun = false
     op = ""
 
-    q = strings.Replace( q ," ",",", -1)
+    q = strings.Replace( q , " " , "," , -1)
     
     resp, err := http.Get("http://140.115.54.93:54321/chatbot?q="+q+"&id="+id)
     if err != nil {
@@ -226,7 +226,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
            //op=""
 
         } else {
-           _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
+           _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("系統目前施工中")).Do()
            // _, err = bot.PushMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
            op=""
         }
