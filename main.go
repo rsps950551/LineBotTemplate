@@ -204,9 +204,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
             //    ..
             echo = err.Error()
             }   
+            httpGet(message.Text,event.Source.UserID)
         } else {
 
-          httpGet(message.Text,event.Source.UserID)
+          
         }
 				// mysql()
 				//message.ID+":"+message.Text
