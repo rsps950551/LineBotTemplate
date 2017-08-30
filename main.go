@@ -226,7 +226,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
            //op=""
 
         } else {
-           _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage('目前系統施工中')).Do()
+           _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("目前系統施工中")).Do()
            // _, err = bot.PushMessage(event.ReplyToken, linebot.NewTextMessage( echo )).Do()
            op=""
         }
