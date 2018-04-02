@@ -60,8 +60,7 @@ func main() {
 	http.ListenAndServe(addr, nil)	
 
     http.HandleFunc("/", sayhelloName) // set router
-    addr := fmt.Sprintf(":%s", 9090)
-    err := http.ListenAndServe(addr, nil) // set listen port
+    err := http.ListenAndServe(":9090", nil) // set listen port
     if err != nil {
         log.Fatal("ListenAndServe: ", err)
     }
