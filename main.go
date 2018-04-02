@@ -22,7 +22,7 @@ import (
 	"net/http"
 	//"encoding/json"
 	//"net/url"
-  //"strings"
+    "strings"
 	// "database/sql"
 	"os"
 	"github.com/line/line-bot-sdk-go/linebot"
@@ -58,8 +58,29 @@ func main() {
 	port := os.Getenv("PORT")
 	addr := fmt.Sprintf(":%s", port)
 	http.ListenAndServe(addr, nil)	
+
+    http.HandleFunc("/", sayhelloName) // set router
+    err := http.ListenAndServe(":9090", nil) // set listen port
+    if err != nil {
+        log.Fatal("ListenAndServe: ", err)
+    }
+
     bottun = false
 }
+
+func sayhelloName(w http.ResponseWriter, r *http.Request) {
+    r.ParseForm()  // parse arguments, you have to call this by yourself
+    fmt.Println(r.Form)  // print form information in server side
+    fmt.Println("path", r.URL.Path)
+    fmt.Println("scheme", r.URL.Scheme)
+    fmt.Println(r.Form["url_long"])
+    for k, v := range r.Form {
+        fmt.Println("key:", k)
+        fmt.Println("val:", strings.Join(v, ""))
+    }
+    fmt.Fprintf(w, "Hello astaxie!") // send data to client side
+}
+
 
 // func mysql(){
 // 	var db, err = sql.Open("mysql","wmlab:wmlab@tcp(140.115.54.82:3306)/wmlab?charset=utf8")
