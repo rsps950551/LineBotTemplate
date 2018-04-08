@@ -55,12 +55,12 @@ func main() {
 	bot, err = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
 	log.Println("Bot:", bot, " err:", err)
 	http.HandleFunc("/callback", callbackHandler)
+    http.HandleFunc("/", sayhelloName) // set router
 	port := os.Getenv("PORT")
 	addr := fmt.Sprintf(":%s", port)
 	http.ListenAndServe(addr, nil)	
 
-    http.HandleFunc("/", sayhelloName) // set router
-    http.ListenAndServe(":9090", nil) // set listen port
+   
     
 
     bottun = false
