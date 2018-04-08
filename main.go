@@ -74,10 +74,10 @@ func sayhelloName(w http.ResponseWriter, r *http.Request) {
     fmt.Println(r.Form["user"])
     fmt.Println(r.Form["message"])
     _, err = bot.PushMessage(r.Form["user"][0], linebot.NewTextMessage(r.Form["message"][0])).Do()
-        if err != nil {
+    if err != nil {
         // handle error
-        echo = err.Error()
-        }   
+       panic(err.Error())
+    }   
     for k, v := range r.Form {
         fmt.Println("key:", k)
         fmt.Println("val:", strings.Join(v, ""))
