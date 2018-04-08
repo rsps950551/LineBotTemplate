@@ -76,7 +76,7 @@ func sayhelloName(w http.ResponseWriter, r *http.Request) {
         fmt.Println("key:", k)
         fmt.Println("val:", strings.Join(v, ""))
     }
-    fmt.Fprintf(w, r.Form["url_long"]) // send data to client side
+    fmt.Fprintf(w, r.Form["url_long"][0]) // send data to client side
 }
 
 
