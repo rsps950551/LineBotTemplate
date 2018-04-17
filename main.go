@@ -74,7 +74,6 @@ func sayhelloName(w http.ResponseWriter, r *http.Request) {
     fmt.Println(r.Form["user"])
     fmt.Println(r.Form["message"])
     bot.PushMessage(r.Form["user"][0], linebot.NewTextMessage(r.Form["message"][0])).Do()
-   
     for k, v := range r.Form {
         fmt.Println("key:", k)
         fmt.Println("val:", strings.Join(v, ""))
@@ -119,7 +118,7 @@ func httpGet(q string , id string) {
 
     // q = strings.Replace( q , " " , "," , -1)    
     
-    resp, err := http.Get("http://140.115.54.93:54321/chatbot?q="+q+"&id="+id)
+    resp, err := http.Get("http://140.115.54.93:8088/?q="+q+"&id="+id)
     if err != nil {
         // handle error
        panic(err.Error())
