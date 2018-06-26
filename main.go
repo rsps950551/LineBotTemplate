@@ -235,8 +235,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
             // gg = "我要"+op+"的教材"
             // leftBtn := linebot.NewMessageTemplateAction("練習題", ff)
             // rightBtn := linebot.NewMessageTemplateAction("教材", gg)
-            uri := linebot.NewURITemplateAction("提供地點",'line://nv/location')
-            template := linebot.NewButtonsTemplate("請問您目前所處的地點是?",'','', uri)
+            uri := linebot.NewURITemplateAction("提供地點","line://nv/location")
+            template := linebot.NewButtonsTemplate("請問您目前所處的地點是?","","", uri)
 
             templatemessgage := linebot.NewTemplateMessage("Sorry :(, please update your app.", template)
             _, err = bot.ReplyMessage(event.ReplyToken, templatemessgage).Do()
