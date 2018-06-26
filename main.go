@@ -223,9 +223,11 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
                    // _, err = bot.PushMessage(event.ReplyToken, linebot.NewTextMessage( echo )).Do()
                    op=""
                 }
-				
-          
-        
+			case *linebot.LocationMessage:
+                echo ="OK"
+                bottun = false
+                httpGet(message.Address , event.Source.UserID)
+                _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage( echo )).Do()
 			}
 		}
 	}
