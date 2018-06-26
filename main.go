@@ -203,47 +203,26 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	//GG
 
-
 	for _, event := range events {
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
-        
-       
-        echo ="OK"
-        bottun = false
-        if message.type =="text" {
-            httpGet(message.Text,event.Source.UserID)
-        }else if message.type == "location" {
-            httpGet(message.address,event.Source.UserID)
-        } else {
-            echo ="我不能了解您的話"
-        }
-      
-       
-        
-				// mysql()
-				//message.ID+":"+message.Text
-        if bottun {
-           //_, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
-            // var ff string
-            // var gg string
-            // ff = "我要"+op+"的練習題"
-            // gg = "我要"+op+"的教材"
-            // leftBtn := linebot.NewMessageTemplateAction("練習題", ff)
-            // rightBtn := linebot.NewMessageTemplateAction("教材", gg)
-            uri := linebot.NewURITemplateAction("提供地點","line://nv/location")
-            template := linebot.NewButtonsTemplate("","地點","請問您目前所處的地點是?", uri)
+                echo ="OK"
+                bottun = false
+                httpGet(message.Text,event.Source.UserID)
+                if bottun {
+                    uri := linebot.NewURITemplateAction("提供地點","line://nv/location")
+                    template := linebot.NewButtonsTemplate("","地點","請問您目前所處的地點是?", uri)
 
-            templatemessgage := linebot.NewTemplateMessage("Sorry :(, please update your app.", template)
-            _, err = bot.ReplyMessage(event.ReplyToken, templatemessgage).Do()
-           //op=""
+                    templatemessgage := linebot.NewTemplateMessage("Sorry :(, please update your app.", template)
+                    _, err = bot.ReplyMessage(event.ReplyToken, templatemessgage).Do()
+                   //op=""
 
-        } else {
-           _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage( echo )).Do()
-           // _, err = bot.PushMessage(event.ReplyToken, linebot.NewTextMessage( echo )).Do()
-           op=""
-        }
+                } else {
+                   _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage( echo )).Do()
+                   // _, err = bot.PushMessage(event.ReplyToken, linebot.NewTextMessage( echo )).Do()
+                   op=""
+                }
 				
           
         
