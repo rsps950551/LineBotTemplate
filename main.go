@@ -135,12 +135,8 @@ func httpGet(q string , id string) {
     
     echo = string(body) 
 
-    if echo == "正在為您轉接"{
-        _, err = bot.PushMessage("Uf6263c4b814700c680228b8b64a27dd6", linebot.NewTextMessage(q)).Do()
-        if err != nil {
-        // handle error
-        echo = err.Error()
-        }   
+    if echo == "location"{
+       bottun = true
     }
    
     // _, err = bot.PushMessage("Uf6263c4b814700c680228b8b64a27dd6", linebot.NewTextMessage(echo)).Do()
@@ -233,14 +229,14 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//message.ID+":"+message.Text
         if bottun {
            //_, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(echo)).Do()
-            var ff string
-            var gg string
-            ff = "我要"+op+"的練習題"
-            gg = "我要"+op+"的教材"
-            leftBtn := linebot.NewMessageTemplateAction("練習題", ff)
-            rightBtn := linebot.NewMessageTemplateAction("教材", gg)
-
-            template := linebot.NewConfirmTemplate("請問是需要練習題還是教材?", leftBtn, rightBtn)
+            // var ff string
+            // var gg string
+            // ff = "我要"+op+"的練習題"
+            // gg = "我要"+op+"的教材"
+            // leftBtn := linebot.NewMessageTemplateAction("練習題", ff)
+            // rightBtn := linebot.NewMessageTemplateAction("教材", gg)
+            uri := linebot.NewURITemplateAction("提供地點",'line://nv/location')
+            template := linebot.NewButtonsTemplate("請問您目前所處的地點是?", uri)
 
             templatemessgage := linebot.NewTemplateMessage("Sorry :(, please update your app.", template)
             _, err = bot.ReplyMessage(event.ReplyToken, templatemessgage).Do()
