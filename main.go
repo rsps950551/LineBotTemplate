@@ -214,9 +214,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
         bottun = false
         if message.Type =="text" {
             httpGet(message.Text,event.Source.UserID)
-        }
-        else if message.Type == "location"{
+        }else if message.Type == "location" {
             httpGet(message.Address,event.Source.UserID)
+        } else {
+            echo ="我不能了解您的話"
         }
       
        
