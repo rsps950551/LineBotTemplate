@@ -212,10 +212,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
        
         echo ="OK"
         bottun = false
-        if message.Type =="text" {
+        if message.type =="text" {
             httpGet(message.Text,event.Source.UserID)
-        }else if message.Type == "location" {
-            httpGet(message.Address,event.Source.UserID)
+        }else if message.type == "location" {
+            httpGet(message.address,event.Source.UserID)
         } else {
             echo ="我不能了解您的話"
         }
