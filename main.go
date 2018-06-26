@@ -209,22 +209,18 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
         
-        if op!= ""{
-          echo ="OK"
-          bottun = false
-
-
-        } else if event.Source.UserID == ""{
-            _, err = bot.PushMessage("Uf6263c4b814700c680228b8b64a27dd6", linebot.NewTextMessage(message.Text)).Do()
-            if err != nil {
-            // handle error
-            //    ..
-            echo = err.Error()
-            }   
-            
-        } else {
-        	httpGet(message.Text,event.Source.UserID)
+       
+        echo ="OK"
+        bottun = false
+        if message.Type =="text" {
+            httpGet(message.Text,event.Source.UserID)
         }
+        else if message.Type == "location"{
+            httpGet(message.Address,event.Source.UserID)
+        }
+      
+       
+        
 				// mysql()
 				//message.ID+":"+message.Text
         if bottun {
