@@ -135,7 +135,7 @@ func httpGet(q string , id string) {
     
     echo = string(body) 
 
-    if echo == "location"{
+    if echo == "請問您所處的地點是"{
        bottun = true
     }
    
